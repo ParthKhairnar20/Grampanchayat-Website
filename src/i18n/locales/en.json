@@ -80,5 +80,51 @@
         }
       }
     }
+  },
+  "home": {
+    "slide1": {
+      "title": "Welcome to ShreeRampur",
+      "subtitle": "A model village committed to sustainable development and prosperity"
+    },
+    "slide2": {
+      "title": "Clean Village, Beautiful Village",
+      "subtitle": "Our pride, our responsibility"
+    },
+    "slide3": {
+      "title": "Journey of Development",
+      "subtitle": "A step towards progress"
+    },
+    "welcomeTitle": "Welcome to ",
+    "villageName": "ShreeRampur",
+    "gramPanchayat": " Gram Panchayat",
+    "welcomeParagraph1": "ShreeRampur is a vibrant village located in the heart of rural Maharashtra, where tradition meets progress. Our Gram Panchayat is committed to the sustainable development of our village and the welfare of our residents.",
+    "welcomeParagraph2": "Under the visionary leadership of our Sarpanch and dedicated Panchayat members, we are working tirelessly to transform ShreeRampur into a model village with modern amenities while preserving our rich cultural heritage.",
+    "learnMore": "Learn More About Us",
+    "membersTitle": "आमची ग्रामपंचायत सदस्य",
+    "membersSubtitle": "गावाच्या विकासासाठी समर्पित नेतृत्व",
+    "emergencyTitle": "Emergency Services",
+    "emergencySubtitle": "24/7 Emergency assistance for our village residents",
+    "ambulanceTitle": "Ambulance Service",
+    "ambulanceContact": "Contact: 108",
+    "ambulanceAlternate": "Alternate: +91 98765 43210",
+    "ambulanceDetails": "24/7 ambulance service with advanced life support",
+    "medicalTitle": "Medical Emergency",
+    "medicalContact1": "Dr. Patil: +91 98765 12345",
+    "medicalContact2": "Primary Health Center: 02135-123456",
+    "medicalDetails": "Available for emergency medical consultations",
+    "policeTitle": "Police Station",
+    "policeContact1": "Emergency: 100",
+    "policeContact2": "Police Station: 02135-234567",
+    "policeDetails": "24/7 police assistance and emergency response",
+    "fireTitle": "Fire Emergency",
+    "fireContact1": "Fire Brigade: 101",
+    "fireContact2": "Control Room: 02135-345678",
+    "fireDetails": "Quick response fire emergency services",
+    "eventsTitle": "Upcoming Events",
+    "eventsSubtitle": "Stay updated with the latest happenings in our village",
+    "viewAllEvents": "View All Events",
+    "ctaTitle": "Have Questions or Suggestions?",
+    "ctaSubtitle": "We're here to serve you. Reach out to us with your queries or feedback.",
+    "contactUs": "Contact Us"
   }
 }

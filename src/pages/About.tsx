@@ -10,7 +10,7 @@ const About = () => {
   return (
     <div className="about-page">
       <HeroSection 
-        backgroundImage="https://images.pexels.com/photos/4458803/pexels-photo-4458803.jpeg"
+        backgroundImage="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=compress&fit=crop&w=1200&q=80"
       />
 
       <section className="village-info-section">
@@ -89,12 +89,17 @@ const About = () => {
       <section className="achievements-section">
         <div className="container">
           <div className="section-header">
-            <h2>{t('about.achievements.title')}</h2>
-            <p>{t('about.achievements.subtitle')}</p>
+            <h2>{t('about.achievements.title', 'Village Achievements')}</h2>
+            <p>{t('about.achievements.subtitle', 'Recognitions and milestones that make us proud')}</p>
           </div>
-          
           <div className="achievements-timeline">
-            {Object.entries(t('about.achievements.items', { returnObjects: true })).map(([year, achievement]: [string, any]) => (
+            {Object.entries(t('about.achievements.items', { returnObjects: true, defaultValue: {
+              '2023': { title: 'State-level Clean Village Award', description: 'Recognized for exemplary waste management and sanitation practices.' },
+              '2022': { title: '100% Digital Literacy', description: 'Achieved digital literacy for all residents between the ages of 14-60 years.' },
+              '2021': { title: 'Water Conservation Model Village', description: 'Implemented innovative water harvesting and conservation techniques.' },
+              '2020': { title: 'Open Defecation Free Status', description: 'Successfully achieved and maintained ODF status with 100% toilet coverage.' },
+              '2018': { title: 'Solar Energy Adoption', description: 'First village in the district to adopt solar energy for street lighting and public facilities.' }
+            }})).map(([year, achievement]: [string, any]) => (
               <div key={year} className="timeline-item">
                 <div className="timeline-dot"></div>
                 <div className="timeline-content">
