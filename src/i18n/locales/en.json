@@ -84,15 +84,18 @@
   "home": {
     "slide1": {
       "title": "Welcome to ShreeRampur",
-      "subtitle": "A model village committed to sustainable development and prosperity"
+      "subtitle": "A model village committed to sustainable development and prosperity",
+      "image": "https://media.istockphoto.com/id/503160722/photo/farmer-spreads-fertilizers-in-the-field-wheat.jpg?s=612x612&w=0&k=20&c=H616JmwTXkV8LVsiriMyqx2M9W_LUHbMwKiHEsehz-E="
     },
     "slide2": {
       "title": "Clean Village, Beautiful Village",
-      "subtitle": "Our pride, our responsibility"
+      "subtitle": "Our pride, our responsibility",
+      "image": "https://media.istockphoto.com/id/1157249891/photo/shantiniketan-bolpur-india-annual-fair-in-evening.jpg?s=612x612&w=0&k=20&c=dHCev7ph_doyr0hoAEBNGDyGsqRD9eLpcsff1p7i3J8="
     },
     "slide3": {
       "title": "Journey of Development",
-      "subtitle": "A step towards progress"
+      "subtitle": "A step towards progress",
+      "image": "https://media.istockphoto.com/id/1060740880/photo/aerial-view-of-poor-indian-town-varsana-barsana-high-resolution-panorama-for-large-format.jpg?s=612x612&w=0&k=20&c=eFZ2CF0oUgcF23IVcsDCw9QGr6q2a6d22_4nTSJKn4c="
     },
     "welcomeTitle": "Welcome to ",
     "villageName": "ShreeRampur",
@@ -126,5 +129,301 @@
     "ctaTitle": "Have Questions or Suggestions?",
     "ctaSubtitle": "We're here to serve you. Reach out to us with your queries or feedback.",
     "contactUs": "Contact Us"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive services and schemes for the welfare of our residents",
+    "offeredTitle": "Services Offered",
+    "offeredSubtitle": "The Gram Panchayat is dedicated to providing efficient services to all residents",
+    "certificates": {
+      "title": "Certificate Issuance",
+      "description": "Birth, death, residence, income, and other essential certificates issued efficiently for village residents."
+    },
+    "hallBooking": {
+      "title": "Community Hall Booking",
+      "description": "Book our well-equipped community hall for various events, functions, and gatherings at affordable rates."
+    },
+    "schemes": {
+      "title": "Scheme Registration",
+      "description": "Assistance in applying for various government welfare schemes, subsidies, and benefits for eligible residents."
+    },
+    "dispute": {
+      "title": "Dispute Resolution",
+      "description": "Traditional village-level dispute resolution mechanism to resolve conflicts amicably within the community."
+    },
+    "library": {
+      "title": "Library Services",
+      "description": "Access to our village library with a collection of books, newspapers, and educational resources."
+    },
+    "housing": {
+      "title": "Housing Assistance",
+      "description": "Guidance for government housing schemes like PMAY-G for eligible beneficiaries in the village."
+    },
+    "health": {
+      "title": "Health Services",
+      "description": "Coordination with primary health center for regular health camps and awareness programs."
+    },
+    "tax": {
+      "title": "Tax Collection",
+      "description": "Collection of property tax, water charges, and other local taxes for village development."
+    },
+    "process": {
+      "title": "How to Avail Services",
+      "subtitle": "Simple process to access Gram Panchayat services",
+      "steps": {
+        "step1": {
+          "title": "Submit Application",
+          "desc": "Visit the Panchayat office or use our online portal to submit your application along with required documents."
+        },
+        "step2": {
+          "title": "Verification",
+          "desc": "Our team will verify your application and documents as per the service requirements."
+        },
+        "step3": {
+          "title": "Processing",
+          "desc": "Your request will be processed within the stipulated timeframe as per service norms."
+        },
+        "step4": {
+          "title": "Service Delivery",
+          "desc": "Once approved, collect your certificate/document or avail the service as applicable."
+        }
+      }
+    },
+    "govSchemes": {
+      "title": "Government Schemes",
+      "subtitle": "Information about various welfare schemes available for eligible residents",
+      "applyNow": "Apply Now",
+      "eligibility": "Eligibility:",
+      "documents": "Required Documents:",
+      "pmKisan": {
+        "title": "PM Kisan Samman Nidhi",
+        "description": "Direct income support of ₹6,000 per year to farmer families",
+        "eligibility": "All small and marginal farmers with cultivable land",
+        "documents": "Aadhaar Card, Land Records, Bank Account details"
+      },
+      "pmay": {
+        "title": "Pradhan Mantri Awas Yojana - Gramin",
+        "description": "Financial assistance for construction of pucca houses",
+        "eligibility": "Houseless families and those with kutcha/dilapidated houses",
+        "documents": "Aadhaar Card, Income Certificate, Land documents"
+      },
+      "ayushman": {
+        "title": "Ayushman Bharat",
+        "description": "Health insurance cover of ₹5 lakh per family per year",
+        "eligibility": "Families identified through SECC database",
+        "documents": "Aadhaar Card, Ration Card"
+      },
+      "mgnrega": {
+        "title": "MGNREGA",
+        "description": "Guarantee of 100 days of wage employment in a financial year",
+        "eligibility": "Adult members of rural households willing to do unskilled manual work",
+        "documents": "Job Card, Aadhaar Card, Bank Account details"
+      }
+    },
+    "officeHours": {
+      "title": "Panchayat Office Hours",
+      "regular": "Monday - Saturday:",
+      "time": "10:00 AM - 5:00 PM",
+      "lunch": "Lunch Break:",
+      "lunchTime": "1:00 PM - 2:00 PM",
+      "holidays": "Sunday & Public Holidays:",
+      "closed": "Closed",
+      "note": {
+        "certificates": "* Certificate services are available from 10:00 AM to 1:00 PM only.",
+        "sarpanch": "* Sarpanch meeting hours: Wednesday & Friday, 3:00 PM - 5:00 PM"
+      }
+    }
+  },
+  "events": {
+    "title": "Village Events",
+    "subtitle": "Stay updated with all the activities happening in ShreeRampur",
+    "upcomingEventsTitle": "Upcoming Events",
+    "upcomingEventsSubtitle": "Be a part of our community gatherings and activities",
+    "search": "Search events...",
+    "categories": {
+      "all": "All",
+      "health": "Health",
+      "agriculture": "Agriculture",
+      "environment": "Environment",
+      "social": "Social",
+      "culture": "Culture"
+    },
+    "noEventsTitle": "No events found",
+    "noEventsDescription": "Try changing your search criteria or check back later for new events.",
+    "annualEventsTitle": "Annual Village Events",
+    "annualEventsSubtitle": "Mark your calendars for these recurring annual events",
+    "annualEvents": {
+      "january": "January",
+      "march": "March",
+      "august": "August",
+      "october": "October",
+      "octNov": "October-November",
+      "republicDay": {
+        "title": "Republic Day Celebration",
+        "date": "January 26",
+        "location": "Village Square"
+      },
+      "holi": {
+        "title": "Holi Festival Gathering",
+        "date": "March (as per calendar)",
+        "location": "Community Ground"
+      },
+      "independenceDay": {
+        "title": "Independence Day Celebration",
+        "date": "August 15",
+        "location": "School Ground"
+      },
+      "sportsTournament": {
+        "title": "Village Sports Tournament",
+        "date": "October 2-10",
+        "location": "Sports Ground"
+      },
+      "diwali": {
+        "title": "Diwali Community Celebration",
+        "date": "As per calendar",
+        "location": "Village Center"
+      }
+    },
+    "dynamicEvents": {
+      "1": {
+        "title": "Blood Donation Camp",
+        "description": "Join us for the annual blood donation camp organized in association with District Hospital.",
+        "date": "May 15, 2025",
+        "time": "9:00 AM - 4:00 PM",
+        "location": "Village Community Hall"
+      },
+      "2": {
+        "title": "Farmers Training Program",
+        "description": "Learn about modern farming techniques and government schemes for farmers.",
+        "date": "June 2, 2025",
+        "time": "10:00 AM - 1:00 PM",
+        "location": "Agricultural Extension Center"
+      },
+      "3": {
+        "title": "Village Cleanliness Drive",
+        "description": "Community initiative to clean our village and promote proper waste management practices.",
+        "date": "June 10, 2025",
+        "time": "7:00 AM - 11:00 AM",
+        "location": "Village Square"
+      },
+      "4": {
+        "title": "Women Empowerment Workshop",
+        "description": "Workshop focused on skill development and entrepreneurship opportunities for women.",
+        "date": "June 18, 2025",
+        "time": "11:00 AM - 2:00 PM",
+        "location": "Panchayat Meeting Hall"
+      },
+      "5": {
+        "title": "Free Health Check-up Camp",
+        "description": "Comprehensive health check-up including eye examination, blood pressure, and diabetes screening.",
+        "date": "July 5, 2025",
+        "time": "9:00 AM - 3:00 PM",
+        "location": "Primary Health Center"
+      },
+      "6": {
+        "title": "Children's Day Celebration",
+        "description": "Fun activities, games, and cultural programs for children on the occasion of Children's Day.",
+        "date": "November 14, 2025",
+        "time": "10:00 AM - 2:00 PM",
+        "location": "Village School Ground"
+      },
+      "7": {
+        "title": "Village Tree Plantation Drive",
+        "description": "Join us for a community tree plantation drive to make our village greener and healthier.",
+        "date": "August 20, 2025",
+        "time": "8:00 AM - 12:00 PM",
+        "location": "Village Entrance Road"
+      }
+    },
+    "proposeTitle": "Have an Event Idea?",
+    "proposeDescription": "We welcome community-driven events and initiatives. If you have an idea for an event that can benefit our village, please share it with us.",
+    "proposeButton": "Propose an Event"
+  },
+  "gallery": {
+    "title": "Our Gallery",
+    "subtitle": "Capturing the essence and spirit of ShreeRampur",
+    "photoGalleryTitle": "Photo Gallery",
+    "photoGallerySubtitle": "A visual journey through our village life and activities",
+    "videoGalleryTitle": "Video Gallery",
+    "videoGallerySubtitle": "Watch videos showcasing village events and achievements",
+    "images": {
+      "1": { "alt": "Village Landscape", "category": "village" },
+      "2": { "alt": "Farming Activities", "category": "agriculture" },
+      "3": { "alt": "Local Festival Celebration", "category": "culture" },
+      "4": { "alt": "Community Meeting", "category": "events" },
+      "5": { "alt": "School Children", "category": "education" },
+      "6": { "alt": "Cultural Program", "category": "culture" },
+      "7": { "alt": "Village Temple", "category": "village" },
+      "8": { "alt": "Wheat Fields", "category": "agriculture" },
+      "9": { "alt": "Village Pond", "category": "village" },
+      "10": { "alt": "Health Camp", "category": "events" },
+      "11": { "alt": "School Activities", "category": "education" },
+      "12": { "alt": "Traditional Dance", "category": "culture" }
+    },
+    "videos": {
+      "1": { "title": "Village Development Project" },
+      "2": { "title": "Republic Day Celebration 2025" },
+      "3": { "title": "Gram Sabha Meeting Highlights" }
+    },
+    "ctaTitle": "Share Your Village Moments",
+    "ctaDescription": "Do you have photos or videos of ShreeRampur village events or beautiful locations? Share them with us to be featured in our gallery.",
+    "submitMedia": "Submit Media",
+    "uploadSuccess": "Media uploaded successfully!",
+    "uploading": "Uploading..."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Reach out to the ShreeRampur Gram Panchayat",
+    "getInTouch": {
+      "title": "Get in Touch",
+      "description": "We are here to assist you with any queries or concerns. Contact us through any of the following means:"
+    },
+    "form": {
+      "title": "Send Us a Message",
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "subject": "Subject",
+      "message": "Your Message",
+      "submit": "Send Message",
+      "success": "Form submitted successfully!"
+    },
+    "address": {
+      "title": "Our Address",
+      "line1": "Gram Panchayat Office, ShreeRampur",
+      "line2": "District: Pune, Maharashtra - 412108"
+    },
+    "phone": {
+      "title": "Phone Numbers",
+      "office": "Office: +91 2345 678901",
+      "sarpanch": "Sarpanch: +91 98765 43210"
+    },
+    "email": {
+      "title": "Email Addresses",
+      "primary": "grampanchayat.shreerampur@gov.in",
+      "sarpanch": "sarpanch.shreerampur@gov.in"
+    },
+    "hours": {
+      "title": "Office Hours",
+      "weekdays": "Monday to Saturday: 10:00 AM - 5:00 PM",
+      "holidays": "Sunday & Public Holidays: Closed"
+    },
+    "feedback": {
+      "title": "Your Feedback Matters",
+      "description": "We value your suggestions and feedback to improve our services. Please share your thoughts to help us serve you better.",
+      "button": "Give Feedback"
+    },
+    "map": {
+      "title": "Find Us",
+      "subtitle": "Visit our office in ShreeRampur village",
+      "directionsTitle": "How to Reach Us",
+      "byBus": "By Bus",
+      "byBusDesc": "Take state transport bus to ShreeRampur bus stop. The Panchayat office is 500m from the bus stop.",
+      "byCar": "By Car",
+      "byCarDesc": "From Pune, take the Pune-Solapur highway and turn at ShreeRampur junction. Follow the signboards to reach the village center.",
+      "byTrain": "By Train",
+      "byTrainDesc": "The nearest railway station is Hadapsar (15 km). Take an auto-rickshaw or bus to reach ShreeRampur."
+    },
+    "formSuccess": "Form submitted successfully!"
   }
 }

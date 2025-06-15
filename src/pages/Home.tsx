@@ -128,20 +128,20 @@ const Home = () => {
     {
       id: 1,
       image: 'https://images.pexels.com/photos/8849294/pexels-photo-8849294.jpeg',
-      title: 'Blood Donation Camp',
-      date: 'May 15, 2025',
-      time: '9:00 AM - 4:00 PM',
-      location: 'Village Community Hall',
-      description: 'Join us for the annual blood donation camp organized in association with District Hospital.'
+      title: t('events.dynamicEvents.1.title', 'Blood Donation Camp'),
+      date: t('events.dynamicEvents.1.date', 'May 15, 2025'),
+      time: t('events.dynamicEvents.1.time', '9:00 AM - 4:00 PM'),
+      location: t('events.dynamicEvents.1.location', 'Village Community Hall'),
+      description: t('events.dynamicEvents.1.description', 'Join us for the annual blood donation camp organized in association with District Hospital.')
     },
     {
       id: 2,
       image: 'https://images.pexels.com/photos/8942991/pexels-photo-8942991.jpeg',
-      title: 'Farmers Training Program',
-      date: 'June 2, 2025',
-      time: '10:00 AM - 1:00 PM',
-      location: 'Agricultural Extension Center',
-      description: 'Learn about modern farming techniques and government schemes for farmers.'
+      title: t('events.dynamicEvents.2.title', 'Farmers Training Program'),
+      date: t('events.dynamicEvents.2.date', 'June 2, 2025'),
+      time: t('events.dynamicEvents.2.time', '10:00 AM - 1:00 PM'),
+      location: t('events.dynamicEvents.2.location', 'Agricultural Extension Center'),
+      description: t('events.dynamicEvents.2.description', 'Learn about modern farming techniques and government schemes for farmers.')
     }
   ];
 

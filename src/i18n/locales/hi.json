@@ -14,15 +14,18 @@
   "home": {
     "slide1": {
       "title": "श्रीरामपुर में आपका स्वागत है",
-      "subtitle": "सतत विकास और समृद्धि के प्रति प्रतिबद्ध एक आदर्श गाँव"
+      "subtitle": "सतत विकास और समृद्धि के प्रति प्रतिबद्ध एक आदर्श गाँव",
+      "image": "https://media.istockphoto.com/id/503160722/photo/farmer-spreads-fertilizers-in-the-field-wheat.jpg?s=612x612&w=0&k=20&c=H616JmwTXkV8LVsiriMyqx2M9W_LUHbMwKiHEsehz-E="
     },
     "slide2": {
       "title": "स्वच्छ गाँव, सुंदर गाँव",
-      "subtitle": "हमारा गर्व, हमारी जिम्मेदारी"
+      "subtitle": "हमारा गर्व, हमारी जिम्मेदारी",
+      "image": "https://media.istockphoto.com/id/1157249891/photo/shantiniketan-bolpur-india-annual-fair-in-evening.jpg?s=612x612&w=0&k=20&c=dHCev7ph_doyr0hoAEBNGDyGsqRD9eLpcsff1p7i3J8="
     },
     "slide3": {
       "title": "विकास की यात्रा",
-      "subtitle": "प्रगति की ओर एक कदम"
+      "subtitle": "प्रगति की ओर एक कदम",
+      "image": "https://media.istockphoto.com/id/1060740880/photo/aerial-view-of-poor-indian-town-varsana-barsana-high-resolution-panorama-for-large-format.jpg?s=612x612&w=0&k=20&c=eFZ2CF0oUgcF23IVcsDCw9QGr6q2a6d22_4nTSJKn4c="
     },
     "welcomeTitle": "Welcome to ",
     "villageName": "ShreeRampur",
@@ -55,7 +58,8 @@
     "viewAllEvents": "सभी कार्यक्रम देखें",
     "ctaTitle": "प्रश्न या सुझाव हैं?",
     "ctaSubtitle": "हम आपकी सेवा के लिए यहाँ हैं। अपनी जिज्ञासाओं या प्रतिक्रिया के साथ हमसे संपर्क करें।",
-    "contactUs": "संपर्क करें"
+    "contactUs": "संपर्क करें",
+    "readMore": "और पढ़ें"
   },
   "about": {
     "history": {

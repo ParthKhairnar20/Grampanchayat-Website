@@ -21,7 +21,8 @@ i18n
         translation: mrTranslations
       }
     },
-    fallbackLng: 'en',
+    lng: 'mr', // Set Marathi as the default language
+    fallbackLng: 'mr', // Set Marathi as the fallback language
     interpolation: {
       escapeValue: false
     }

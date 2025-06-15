@@ -9,6 +9,8 @@ const Gallery = () => {
   const [playingVideo, setPlayingVideo] = useState<number | null>(null);
   const [uploading, setUploading] = useState(false);
   const [uploadMessage, setUploadMessage] = useState<string | null>(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   const images = [
     {
@@ -121,6 +123,15 @@ const Gallery = () => {
     }, 1500);
   };
 
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => setLightboxOpen(false);
+  const prevImage = () => setLightboxIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  const nextImage = () => setLightboxIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+
   return (
     <div className="gallery-page">
       <HeroSection 
@@ -135,8 +146,25 @@ const Gallery = () => {
             <h2>{t('gallery.photoGalleryTitle', 'Photo Gallery')}</h2>
             <p>{t('gallery.photoGallerySubtitle', 'A visual journey through our village life and activities')}</p>
           </div>
-          
-          <GalleryGrid images={images} />
+          <div className="gallery-grid">
+            {images.map((img, idx) => (
+              <div key={img.id} className="gallery-image-wrapper" onClick={() => openLightbox(idx)} style={{cursor: 'pointer', position: 'relative'}}>
+                <img src={img.src} alt={img.alt} className="gallery-image" />
+                <div className="gallery-image-overlay">{img.alt}</div>
+              </div>
+            ))}
+          </div>
+          {lightboxOpen && (
+            <div className="lightbox-overlay" style={{position: 'fixed', top:0, left:0, width:'100vw', height:'100vh', background:'rgba(0,0,0,0.8)', display:'flex', alignItems:'center', justifyContent:'center', zIndex:1000}} onClick={closeLightbox}>
+              <button onClick={e => {e.stopPropagation(); prevImage();}} style={{position:'absolute', left:30, top:'50%', transform:'translateY(-50%)', fontSize:32, color:'#fff', background:'none', border:'none', cursor:'pointer'}}>&#8592;</button>
+              <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+                <img src={images[lightboxIndex].src} alt={images[lightboxIndex].alt} style={{maxHeight:'80vh', maxWidth:'80vw', borderRadius:8}} onClick={e => e.stopPropagation()} />
+                <div style={{color:'#fff', marginTop:16, fontSize:20, fontWeight:500, textAlign:'center'}}>{images[lightboxIndex].alt}</div>
+              </div>
+              <button onClick={e => {e.stopPropagation(); nextImage();}} style={{position:'absolute', right:30, top:'50%', transform:'translateY(-50%)', fontSize:32, color:'#fff', background:'none', border:'none', cursor:'pointer'}}>&#8594;</button>
+              <button onClick={e => {e.stopPropagation(); closeLightbox();}} style={{position:'absolute', top:30, right:30, fontSize:32, color:'#fff', background:'none', border:'none', cursor:'pointer'}}>✕</button>
+            </div>
+          )}
         </div>
       </section>
 
