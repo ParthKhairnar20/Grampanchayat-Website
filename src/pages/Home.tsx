@@ -171,6 +171,12 @@ const Home = () => {
         </div>
       </div>
 
+      <div className="important-notice-3d">
+        <div className="notice-scroll">
+          <span className="notice-text">{t('home.importantNotice', 'Important Notice: Please attend the Gram Sabha meeting on 25th June at 5:00 PM in the Village Hall. Your participation is valuable for village development!')}</span>
+        </div>
+      </div>
+
       <section className="welcome-section">
         <div className="container">
           <div className="welcome-content">
