@@ -1,5 +1,5 @@
-import React from 'react';
-import { FileText, Calendar, Award, Users, BookOpen, Home, Heart, Percent } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { FileText, Calendar, Award, Users, BookOpen, Home, Heart, Percent, File, FileSpreadsheet, FileType2 } from 'lucide-react';
 import HeroSection from '../components/HeroSection';
 import ServiceCard from '../components/ServiceCard';
 import '../styles/Services.css';
@@ -88,6 +88,63 @@ const Services = () => {
       documents: t('services.govSchemes.mgnrega.documents', 'Job Card, Aadhaar Card, Bank Account details')
     }
   ];
+
+  // Documentation state
+  const [documents, setDocuments] = useState<Array<{ id: number; name: string; url: string; [key: string]: any }>>([]);
+  const [uploading, setUploading] = useState(false);
+  const [uploadMsg, setUploadMsg] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // PDF Preview state
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const handlePreview = (url: string) => setPreviewUrl(url);
+  const closePreview = () => setPreviewUrl(null);
+
+  // Helper to get icon by file type
+ const getFileIcon = (name: string | undefined) => {
+  if (!name) return <File size={22} style={{color:'#888'}} />;
+  const ext = name.split('.').pop()?.toLowerCase();
+  if (ext === 'pdf') return <FileText size={22} style={{color:'#ff4e50'}} />;
+  if (ext === 'csv') return <FileSpreadsheet size={22} style={{color:'#138808'}} />;
+  if (ext === 'txt') return <FileType2 size={22} style={{color:'#f9d423'}} />;
+  return <File size={22} style={{color:'#888'}} />;
+};
+
+  const handleDocumentUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
+    setUploading(true);
+
+    const formData = new FormData();
+    formData.append('file', files[0]);
+    formData.append('uploaded_by', 'admin'); // Example static value, replace as needed
+    formData.append('description', 'Uploaded via web app'); // Example static value, replace as needed
+    formData.append('type', 'brochure'); // Example static value, replace as needed
+
+    const response = await fetch('http://localhost:5000/upload', {
+      method: 'POST',
+      body: formData,
+    });
+    const data = await response.json();
+    setDocuments(prev => [...prev, data]);
+    setUploading(false);
+    setUploadMsg('Document uploaded successfully!');
+    setTimeout(() => setUploadMsg(null), 2500);
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  }
+
+  React.useEffect(() => {
+    fetch('http://localhost:5000/documents')
+      .then(res => res.json())
+      .then(setDocuments);
+  }, []);
+
+  const schemeLinks: { [key: number]: string } = {
+    1: 'https://pmkisan.gov.in/',
+    2: 'https://pmayg.nic.in/',
+    3: 'https://pmjay.gov.in/',
+    4: 'https://nrega.nic.in/'
+  };
 
   return (
     <div className="services-page">
@@ -182,7 +239,7 @@ const Services = () => {
                     <p>{scheme.documents}</p>
                   </div>
                 </div>
-                <button className="scheme-btn">{t('services.govSchemes.applyNow', 'Apply Now')}</button>
+                <button className="scheme-btn" onClick={() => window.open(schemeLinks[scheme.id], '_blank', 'noopener,noreferrer')}>{t('services.govSchemes.applyNow', 'Apply Now')}</button>
               </div>
             ))}
           </div>
@@ -213,6 +270,84 @@ const Services = () => {
                 {t('services.officeHours.note.sarpanch', '* Sarpanch meeting hours: Wednesday & Friday, 3:00 PM - 5:00 PM')}
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="documentation-section">
+        <div className="container">
+          <div className="section-header">
+            <h2>{t('services.docs.title', 'Gram Panchayat Documentation')}</h2>
+            <p>{t('services.docs.subtitle', 'Download brochures and important documents or upload your own PDFs.')}</p>
+          </div>
+          <div className="docs-upload">
+            <input
+              type="file"
+              accept=".pdf,.csv,.txt"
+              multiple
+              ref={fileInputRef}
+              onChange={handleDocumentUpload}
+              style={{ display: 'none' }}
+            />
+            <button
+              className="docs-upload-btn"
+              onClick={() => fileInputRef.current?.click()}
+              disabled={uploading}
+            >
+              {t('services.docs.uploadBtn', 'Upload PDF')}
+            </button>
+            {uploading && <span className="uploading-msg">{t('services.docs.uploading', 'Uploading...')}</span>}
+            {uploadMsg && <span className="upload-success-msg">{uploadMsg}</span>}
+          </div>
+          <div className="docs-list">
+            {documents.length === 0 ? (
+              <p>{t('services.docs.noDocs', 'No documents uploaded yet.')}</p>
+            ) : (
+              <ul>
+                {documents.map((doc, idx) => (
+                  <li key={idx}>
+                    {getFileIcon(doc.name)}
+                    <span className="doc-name">{doc.name}</span>
+                    <button
+                      className="docs-download-btn"
+                      onClick={() => {
+                        const a = document.createElement('a');
+                        a.href = doc.url;
+                        a.download = doc.name;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                      }}
+                    >
+                      {t('services.docs.download', 'Download')}
+                    </button>
+                    <button
+                      className="docs-preview-btn"
+                      onClick={() => handlePreview(doc.url)}
+                    >
+                      {t('services.docs.preview', 'Preview')}
+                    </button>
+                    <button
+                      className="docs-delete-btn"
+                      onClick={async () => {
+                        await fetch(`http://localhost:5000/documents/${doc.id}`, { method: 'DELETE' });
+                        setDocuments(prev => prev.filter(d => d.id !== doc.id));
+                      }}
+                    >
+                      Delete
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+            {previewUrl && (
+              <div className="pdf-preview-modal" onClick={closePreview}>
+                <div className="pdf-preview-content" onClick={e => e.stopPropagation()}>
+                  <button className="pdf-preview-close" onClick={closePreview}>✕</button>
+                  <iframe src={previewUrl} title="PDF Preview" width="100%" height="600px" style={{border:0}}></iframe>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
