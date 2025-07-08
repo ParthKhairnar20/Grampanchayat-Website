@@ -1,6 +1,6 @@
 {
   "welcome": {
-    "title": "Welcome to ShreeRampur",
+    "title": "Welcome to Janori",
     "subtitle": "A model village committed to sustainable development and prosperity"
   },
   "nav": {
@@ -14,8 +14,8 @@
   "about": {
     "history": {
       "title": "Our Village History",
-      "p1": "ShreeRampur has a rich history dating back to the 18th century. Named after Lord Ram, the village was established by freedom fighters who sought refuge in this serene location during India's struggle for independence.",
-      "p2": "Over the years, ShreeRampur has transformed from a small agricultural settlement into a progressive rural community while preserving its cultural heritage and traditions.",
+      "p1": "Janori - A holy and historical religious place in Vidarbha Janori village is located in Buldhana district of Maharashtra, about 5 to 6 kilometers from Shegaon. This village is very famous in Vidarbha due to the architecture of our ancient temples, religious traditions, and spiritual atmosphere.",
+      "p2": "Over the years, Janori has transformed from a small agricultural settlement into a progressive rural community while preserving its cultural heritage and traditions.",
       "p3": "Today, our village is known for its agricultural prosperity, cultural richness, and community harmony, making it a model village in the district."
     },
     "demographics": {
@@ -83,7 +83,7 @@
   },
   "home": {
     "slide1": {
-      "title": "Welcome to ShreeRampur",
+      "title": "Welcome to Janori",
       "subtitle": "A model village committed to sustainable development and prosperity",
       "image": "https://media.istockphoto.com/id/503160722/photo/farmer-spreads-fertilizers-in-the-field-wheat.jpg?s=612x612&w=0&k=20&c=H616JmwTXkV8LVsiriMyqx2M9W_LUHbMwKiHEsehz-E="
     },
@@ -98,10 +98,10 @@
       "image": "https://media.istockphoto.com/id/1060740880/photo/aerial-view-of-poor-indian-town-varsana-barsana-high-resolution-panorama-for-large-format.jpg?s=612x612&w=0&k=20&c=eFZ2CF0oUgcF23IVcsDCw9QGr6q2a6d22_4nTSJKn4c="
     },
     "welcomeTitle": "Welcome to ",
-    "villageName": "ShreeRampur",
+    "villageName": "Janori",
     "gramPanchayat": " Gram Panchayat",
-    "welcomeParagraph1": "ShreeRampur is a vibrant village located in the heart of rural Maharashtra, where tradition meets progress. Our Gram Panchayat is committed to the sustainable development of our village and the welfare of our residents.",
-    "welcomeParagraph2": "Under the visionary leadership of our Sarpanch and dedicated Panchayat members, we are working tirelessly to transform ShreeRampur into a model village with modern amenities while preserving our rich cultural heritage.",
+    "welcomeParagraph1": "Janori is a small but religiously and historically rich village in Buldhana district of Maharashtra. This village is located just a few kilometers from Shegaon. This place is especially famous in the Vidarbha region, as it has many ancient temples and religious traditions.",
+    "welcomeParagraph2": "Under the visionary leadership of our Sarpanch and dedicated Panchayat members, we are working tirelessly to transform Janori into a model village with modern amenities while preserving our rich cultural heritage.",
     "learnMore": "Learn More About Us",
     "membersTitle": "आमची ग्रामपंचायत सदस्य",
     "membersSubtitle": "गावाच्या विकासासाठी समर्पित नेतृत्व",
@@ -237,7 +237,7 @@
   },
   "events": {
     "title": "Village Events",
-    "subtitle": "Stay updated with all the activities happening in ShreeRampur",
+    "subtitle": "Stay updated with all the activities happening in Janori",
     "upcomingEventsTitle": "Upcoming Events",
     "upcomingEventsSubtitle": "Be a part of our community gatherings and activities",
     "search": "Search events...",
@@ -342,7 +342,7 @@
   },
   "gallery": {
     "title": "Our Gallery",
-    "subtitle": "Capturing the essence and spirit of ShreeRampur",
+    "subtitle": "Capturing the essence and spirit of Janori",
     "photoGalleryTitle": "Photo Gallery",
     "photoGallerySubtitle": "A visual journey through our village life and activities",
     "videoGalleryTitle": "Video Gallery",
@@ -367,14 +367,14 @@
       "3": { "title": "Gram Sabha Meeting Highlights" }
     },
     "ctaTitle": "Share Your Village Moments",
-    "ctaDescription": "Do you have photos or videos of ShreeRampur village events or beautiful locations? Share them with us to be featured in our gallery.",
+    "ctaDescription": "Do you have photos or videos of Janori village events or beautiful locations? Share them with us to be featured in our gallery.",
     "submitMedia": "Submit Media",
     "uploadSuccess": "Media uploaded successfully!",
     "uploading": "Uploading..."
   },
   "contact": {
     "title": "Contact Us",
-    "subtitle": "Reach out to the ShreeRampur Gram Panchayat",
+    "subtitle": "Reach out to the Janori Gram Panchayat",
     "getInTouch": {
       "title": "Get in Touch",
       "description": "We are here to assist you with any queries or concerns. Contact us through any of the following means:"
@@ -391,7 +391,7 @@
     },
     "address": {
       "title": "Our Address",
-      "line1": "Gram Panchayat Office, ShreeRampur",
+      "line1": "Gram Panchayat Office, Janori",
       "line2": "District: Pune, Maharashtra - 412108"
     },
     "phone": {
@@ -401,8 +401,8 @@
     },
     "email": {
       "title": "Email Addresses",
-      "primary": "grampanchayat.shreerampur@gov.in",
-      "sarpanch": "sarpanch.shreerampur@gov.in"
+      "primary": "grampanchayat.janori@gov.in",
+      "sarpanch": "sarpanch.janori@gov.in"
     },
     "hours": {
       "title": "Office Hours",
@@ -416,14 +416,14 @@
     },
     "map": {
       "title": "Find Us",
-      "subtitle": "Visit our office in ShreeRampur village",
+      "subtitle": "Visit our office in Janori village",
       "directionsTitle": "How to Reach Us",
       "byBus": "By Bus",
-      "byBusDesc": "Take state transport bus to ShreeRampur bus stop. The Panchayat office is 500m from the bus stop.",
+      "byBusDesc": "Take state transport bus to Janori bus stop. The Panchayat office is 500m from the bus stop.",
       "byCar": "By Car",
-      "byCarDesc": "From Pune, take the Pune-Solapur highway and turn at ShreeRampur junction. Follow the signboards to reach the village center.",
+      "byCarDesc": "From Pune, take the Pune-Solapur highway and turn at Janori junction. Follow the signboards to reach the village center.",
       "byTrain": "By Train",
-      "byTrainDesc": "The nearest railway station is Hadapsar (15 km). Take an auto-rickshaw or bus to reach ShreeRampur."
+      "byTrainDesc": "The nearest railway station is Hadapsar (15 km). Take an auto-rickshaw or bus to reach Janori."
     },
     "formSuccess": "Form submitted successfully!"
   }

@@ -136,7 +136,7 @@ const Gallery = () => {
     <div className="gallery-page">
       <HeroSection 
         title={t('gallery.title', 'Our Gallery')} 
-        subtitle={t('gallery.subtitle', 'Capturing the essence and spirit of ShreeRampur')}
+        subtitle={t('gallery.subtitle', 'Capturing the essence and spirit of Janori')}
         backgroundImage="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=compress&fit=crop&w=1200&q=80"
       />
 
@@ -206,7 +206,7 @@ const Gallery = () => {
         <div className="container">
           <div className="gallery-cta-content">
             <h2>{t('gallery.ctaTitle', 'Share Your Village Moments')}</h2>
-            <p>{t('gallery.ctaDescription', 'Do you have photos or videos of ShreeRampur village events or beautiful locations? Share them with us to be featured in our gallery.')}</p>
+            <p>{t('gallery.ctaDescription', 'Do you have photos or videos of Janori village events or beautiful locations? Share them with us to be featured in our gallery.')}</p>
             <label className="btn-primary" style={{ cursor: uploading ? 'not-allowed' : 'pointer', opacity: uploading ? 0.6 : 1 }}>
               {t('gallery.submitMedia', 'Submit Media')}
               <input

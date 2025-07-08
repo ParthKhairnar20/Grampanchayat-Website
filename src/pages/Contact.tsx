@@ -16,7 +16,7 @@ const Contact = () => {
     <div className="contact-page">
       <HeroSection 
         title={t('contact.title', 'Contact Us')}
-        subtitle={t('contact.subtitle', 'Reach out to the ShreeRampur Gram Panchayat')}
+        subtitle={t('contact.subtitle', 'Reach out to the Janori Gram Panchayat')}
         backgroundImage="https://images.pexels.com/photos/1655901/pexels-photo-1655901.jpeg"
       />
 
@@ -31,7 +31,7 @@ const Contact = () => {
                   <MapPin size={24} className="contact-icon" />
                   <div className="contact-text">
                     <h3>{t('contact.address.title', 'Our Address')}</h3>
-                    <p>{t('contact.address.line1', 'Gram Panchayat Office, ShreeRampur,')}<br />{t('contact.address.line2', 'District: Pune, Maharashtra - 412108')}</p>
+                    <p>{t('contact.address.line1', 'Gram Panchayat Office, Janori,')}<br />{t('contact.address.line2', 'District: Pune, Maharashtra - 412108')}</p>
                   </div>
                 </div>
                 <div className="contact-item">
@@ -45,7 +45,7 @@ const Contact = () => {
                   <Mail size={24} className="contact-icon" />
                   <div className="contact-text">
                     <h3>{t('contact.email.title', 'Email Address')}</h3>
-                    <p>{t('contact.email.primary', 'grampanchayat.shreerampur@gov.in')}<br />{t('contact.email.sarpanch', 'sarpanch.shreerampur@gov.in')}</p>
+                    <p>{t('contact.email.primary', 'grampanchayat.janori@gov.in')}<br />{t('contact.email.sarpanch', 'sarpanch.janori@gov.in')}</p>
                   </div>
                 </div>
                 <div className="contact-item">
@@ -94,12 +94,12 @@ const Contact = () => {
         <div className="container">
           <div className="section-header">
             <h2>{t('contact.map.title', 'Find Us')}</h2>
-            <p>{t('contact.map.subtitle', 'Visit our office in ShreeRampur village')}</p>
+            <p>{t('contact.map.subtitle', 'Visit our office in Janori village')}</p>
           </div>
           <div className="map-container">
             <iframe
-              title="ShreeRampur Village Location"
-              src="https://www.google.com/maps?q=ShreeRampur,+Maharashtra,+India&output=embed"
+              title="Janori Village Location"
+              src="https://www.google.com/maps?q=Janori,+Maharashtra,+India&output=embed"
               width="100%"
               height="350"
               style={{ border: 0, borderRadius: 8 }}
@@ -113,15 +113,15 @@ const Contact = () => {
             <div className="direction-options">
               <div className="direction-option">
                 <h4>{t('contact.map.byBus', 'By Bus')}</h4>
-                <p>{t('contact.map.byBusDesc', 'Take state transport bus to ShreeRampur bus stop. The Panchayat office is 500m from the bus stop.')}</p>
+                <p>{t('contact.map.byBusDesc', 'Take state transport bus to Janori bus stop. The Panchayat office is 500m from the bus stop.')}</p>
               </div>
               <div className="direction-option">
                 <h4>{t('contact.map.byCar', 'By Car')}</h4>
-                <p>{t('contact.map.byCarDesc', 'From Pune, take the Pune-Solapur highway and turn at ShreeRampur junction. Follow the signboards to reach the village center.')}</p>
+                <p>{t('contact.map.byCarDesc', 'From Pune, take the Pune-Solapur highway and turn at Janori junction. Follow the signboards to reach the village center.')}</p>
               </div>
               <div className="direction-option">
                 <h4>{t('contact.map.byTrain', 'By Train')}</h4>
-                <p>{t('contact.map.byTrainDesc', 'The nearest railway station is Hadapsar (15 km). Take an auto-rickshaw or bus to reach ShreeRampur.')}</p>
+                <p>{t('contact.map.byTrainDesc', 'The nearest railway station is Hadapsar (15 km). Take an auto-rickshaw or bus to reach Janori.')}</p>
               </div>
             </div>
           </div>

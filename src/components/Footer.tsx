@@ -9,21 +9,21 @@ const Footer = () => {
       <div className="container">
         <div className="footer-content">
           <div className="footer-section about">
-            <h3 className="footer-title">ShreeRampur Gram Panchayat</h3>
+            <h3 className="footer-title">Janori Gram Panchayat</h3>
             <p>
-              Serving the residents of ShreeRampur village with dedication and transparency,
+              Serving the residents of Janori village with dedication and transparency,
               working together for rural development and community welfare.
             </p>
             <div className="social-media">
-              <Link to="#" className="social-icon">
+              <a href="https://facebook.com" className="social-icon" target="_blank" rel="noopener noreferrer">
                 <Facebook size={20} />
-              </Link>
-              <Link to="#" className="social-icon">
+              </a>
+              <a href="https://twitter.com" className="social-icon" target="_blank" rel="noopener noreferrer">
                 <Twitter size={20} />
-              </Link>
-              <Link to="#" className="social-icon">
+              </a>
+              <a href="https://instagram.com" className="social-icon" target="_blank" rel="noopener noreferrer">
                 <Instagram size={20} />
-              </Link>
+              </a>
             </div>
           </div>
 
@@ -44,7 +44,7 @@ const Footer = () => {
             <div className="contact-info">
               <p>
                 <MapPin size={16} className="contact-icon" />
-                Gram Panchayat Office, ShreeRampur, Dist: Pune, Maharashtra - 412108
+                At post Janori Tq. Shegaon Dist buldhana Pin no. 444203
               </p>
               <p>
                 <Phone size={16} className="contact-icon" />
@@ -52,14 +52,14 @@ const Footer = () => {
               </p>
               <p>
                 <Mail size={16} className="contact-icon" />
-                grampanchayat.shreerampur@gov.in
+                grampanchayat.janori@gov.in
               </p>
             </div>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} ShreeRampur Gram Panchayat. All Rights Reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Janori Gram Panchayat. All Rights Reserved.</p>
         </div>
       </div>
     </footer>

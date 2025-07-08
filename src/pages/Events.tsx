@@ -97,7 +97,7 @@ const Events = () => {
     <div className="events-page">
       <HeroSection 
         title={t('events.title', 'Village Events')} 
-        subtitle={t('events.subtitle', 'Stay updated with all the activities happening in ShreeRampur')}
+        subtitle={t('events.subtitle', 'Stay updated with all the activities happening in Janori')}
         backgroundImage="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=compress&fit=crop&w=1200&q=80"
       />
 

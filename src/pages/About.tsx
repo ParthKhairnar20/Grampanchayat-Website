@@ -17,7 +17,7 @@ const About = () => {
         <div className="container">
           <div className="village-info-content">
             <div className="village-image">
-              <img src="https://images.pexels.com/photos/4577372/pexels-photo-4577372.jpeg" alt="ShreeRampur Village View" />
+              <img src="https://images.pexels.com/photos/4577372/pexels-photo-4577372.jpeg" alt="Janori Village View" />
             </div>
             <div className="village-text">
               <h2>{t('about.history.title')}</h2>

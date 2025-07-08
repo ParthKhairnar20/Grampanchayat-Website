@@ -1,9 +1,7 @@
-import React, { useRef, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FileText, Calendar, Award, Home as HomeIcon, Users, Phone, Ambulance, Stethoscope, PhoneCall } from 'lucide-react';
-import HeroSection from '../components/HeroSection';
+import { Phone, Ambulance, Stethoscope, PhoneCall } from 'lucide-react';
 import EventCard from '../components/EventCard';
-import ServiceCard from '../components/ServiceCard';
 import '../styles/Home.css';
 import { useTranslation } from 'react-i18next';
 
@@ -14,7 +12,7 @@ const Home = () => {
   const slides = [
     {
       image: "https://media.istockphoto.com/id/503160722/photo/farmer-spreads-fertilizers-in-the-field-wheat.jpg?s=612x612&w=0&k=20&c=H616JmwTXkV8LVsiriMyqx2M9W_LUHbMwKiHEsehz-E=",
-      title: t('home.slide1.title', 'Welcome to ShreeRampur'),
+      title: t('home.slide1.title', 'Welcome to Janori'),
       subtitle: t('home.slide1.subtitle', 'A model village committed to sustainable development and prosperity')
     },
     {
@@ -181,9 +179,9 @@ const Home = () => {
         <div className="container">
           <div className="welcome-content">
             <div className="welcome-text">
-              <h2>{t('home.welcomeTitle', 'Welcome to ')}<span>{t('home.villageName', 'ShreeRampur')}</span>{t('home.gramPanchayat', ' Gram Panchayat')}</h2>
-              <p>{t('home.welcomeParagraph1', 'ShreeRampur is a vibrant village located in the heart of rural Maharashtra, where tradition meets progress. Our Gram Panchayat is committed to the sustainable development of our village and the welfare of our residents.')}</p>
-              <p>{t('home.welcomeParagraph2', 'Under the visionary leadership of our Sarpanch and dedicated Panchayat members, we are working tirelessly to transform ShreeRampur into a model village with modern amenities while preserving our rich cultural heritage.')}</p>
+              <h2>{t('home.welcomeTitle', 'Welcome to ')}<span>{t('home.villageName', 'Janori')}</span>{t('home.gramPanchayat', ' Gram Panchayat')}</h2>
+              <p>{t('home.welcomeParagraph1', 'Janori is a small but religiously and historically rich village in Buldhana district of Maharashtra. This village is located just a few kilometers from Shegaon. This place is especially famous in the Vidarbha region, as it has many ancient temples and religious traditions.')}</p>
+              <p>{t('home.welcomeParagraph2', 'Under the visionary leadership of our Sarpanch and dedicated Panchayat members, we are working tirelessly to transform Janori into a model village with modern amenities while preserving our rich cultural heritage.')}</p>
               <Link to="/about" className="btn-primary">{t('home.learnMore', 'Learn More About Us')}</Link>
             </div>
           </div>

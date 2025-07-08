@@ -12,49 +12,49 @@ const Services = () => {
       id: 1,
       icon: <FileText size={32} />,
       title: t('services.certificates.title', 'Certificate Issuance'),
-      description: t('services.certificates.description', 'Birth, death, residence, income, and other essential certificates issued efficiently for village residents.')
+      description: t('services.certificates.description', 'Birth, death, residence, income, and other essential certificates issued efficiently for village residents of Janori.')
     },
     {
       id: 2,
       icon: <Calendar size={32} />,
       title: t('services.hallBooking.title', 'Community Hall Booking'),
-      description: t('services.hallBooking.description', 'Book our well-equipped community hall for various events, functions, and gatherings at affordable rates.')
+      description: t('services.hallBooking.description', 'Book our well-equipped community hall in Janori for various events, functions, and gatherings at affordable rates.')
     },
     {
       id: 3,
       icon: <Award size={32} />,
       title: t('services.schemes.title', 'Scheme Registration'),
-      description: t('services.schemes.description', 'Assistance in applying for various government welfare schemes, subsidies, and benefits for eligible residents.')
+      description: t('services.schemes.description', 'Assistance in applying for various government welfare schemes, subsidies, and benefits for eligible residents of Janori.')
     },
     {
       id: 4,
       icon: <Users size={32} />,
       title: t('services.dispute.title', 'Dispute Resolution'),
-      description: t('services.dispute.description', 'Traditional village-level dispute resolution mechanism to resolve conflicts amicably within the community.')
+      description: t('services.dispute.description', 'Traditional Janori village-level dispute resolution mechanism to resolve conflicts amicably within the community.')
     },
     {
       id: 5,
       icon: <BookOpen size={32} />,
       title: t('services.library.title', 'Library Services'),
-      description: t('services.library.description', 'Access to our village library with a collection of books, newspapers, and educational resources.')
+      description: t('services.library.description', 'Access to our Janori village library with a collection of books, newspapers, and educational resources.')
     },
     {
       id: 6,
       icon: <Home size={32} />,
       title: t('services.housing.title', 'Housing Assistance'),
-      description: t('services.housing.description', 'Guidance for government housing schemes like PMAY-G for eligible beneficiaries in the village.')
+      description: t('services.housing.description', 'Guidance for government housing schemes like PMAY-G for eligible beneficiaries in Janori village.')
     },
     {
       id: 7,
       icon: <Heart size={32} />,
       title: t('services.health.title', 'Health Services'),
-      description: t('services.health.description', 'Coordination with primary health center for regular health camps and awareness programs.')
+      description: t('services.health.description', 'Coordination with primary health center for regular health camps and awareness programs in Janori.')
     },
     {
       id: 8,
       icon: <Percent size={32} />,
       title: t('services.tax.title', 'Tax Collection'),
-      description: t('services.tax.description', 'Collection of property tax, water charges, and other local taxes for village development.')
+      description: t('services.tax.description', 'Collection of property tax, water charges, and other local taxes for Janori village development.')
     }
   ];
 
@@ -62,7 +62,7 @@ const Services = () => {
     {
       id: 1,
       title: t('services.govSchemes.pmKisan.title', 'PM Kisan Samman Nidhi'),
-      description: t('services.govSchemes.pmKisan.description', 'Direct income support of ₹6,000 per year to farmer families'),
+      description: t('services.govSchemes.pmKisan.description', 'Direct income support of ₹6,000 per year to farmer families in Janori'),
       eligibility: t('services.govSchemes.pmKisan.eligibility', 'All small and marginal farmers with cultivable land'),
       documents: t('services.govSchemes.pmKisan.documents', 'Aadhaar Card, Land Records, Bank Account details')
     },
@@ -99,6 +99,9 @@ const Services = () => {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const handlePreview = (url: string) => setPreviewUrl(url);
   const closePreview = () => setPreviewUrl(null);
+
+  // Check admin status from localStorage
+  const isAdmin = typeof window !== 'undefined' && window.localStorage.getItem('isAdmin') === 'true';
 
   // Helper to get icon by file type
  const getFileIcon = (name: string | undefined) => {
@@ -280,25 +283,27 @@ const Services = () => {
             <h2>{t('services.docs.title', 'Gram Panchayat Documentation')}</h2>
             <p>{t('services.docs.subtitle', 'Download brochures and important documents or upload your own PDFs.')}</p>
           </div>
-          <div className="docs-upload">
-            <input
-              type="file"
-              accept=".pdf,.csv,.txt"
-              multiple
-              ref={fileInputRef}
-              onChange={handleDocumentUpload}
-              style={{ display: 'none' }}
-            />
-            <button
-              className="docs-upload-btn"
-              onClick={() => fileInputRef.current?.click()}
-              disabled={uploading}
-            >
-              {t('services.docs.uploadBtn', 'Upload PDF')}
-            </button>
-            {uploading && <span className="uploading-msg">{t('services.docs.uploading', 'Uploading...')}</span>}
-            {uploadMsg && <span className="upload-success-msg">{uploadMsg}</span>}
-          </div>
+          {isAdmin && (
+            <div className="docs-upload">
+              <input
+                type="file"
+                accept=".pdf,.csv,.txt"
+                multiple
+                ref={fileInputRef}
+                onChange={handleDocumentUpload}
+                style={{ display: 'none' }}
+              />
+              <button
+                className="docs-upload-btn"
+                onClick={() => fileInputRef.current?.click()}
+                disabled={uploading}
+              >
+                {t('services.docs.uploadBtn', 'Upload PDF')}
+              </button>
+              {uploading && <span className="uploading-msg">{t('services.docs.uploading', 'Uploading...')}</span>}
+              {uploadMsg && <span className="upload-success-msg">{uploadMsg}</span>}
+            </div>
+          )}
           <div className="docs-list">
             {documents.length === 0 ? (
               <p>{t('services.docs.noDocs', 'No documents uploaded yet.')}</p>
@@ -327,15 +332,17 @@ const Services = () => {
                     >
                       {t('services.docs.preview', 'Preview')}
                     </button>
-                    <button
-                      className="docs-delete-btn"
-                      onClick={async () => {
-                        await fetch(`http://localhost:5000/documents/${doc.id}`, { method: 'DELETE' });
-                        setDocuments(prev => prev.filter(d => d.id !== doc.id));
-                      }}
-                    >
-                      Delete
-                    </button>
+                    {isAdmin && (
+                      <button
+                        className="docs-delete-btn"
+                        onClick={async () => {
+                          await fetch(`http://localhost:5000/documents/${doc.id}`, { method: 'DELETE' });
+                          setDocuments(prev => prev.filter(d => d.id !== doc.id));
+                        }}
+                      >
+                        Delete
+                      </button>
+                    )}
                   </li>
                 ))}
               </ul>
