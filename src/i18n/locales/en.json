@@ -9,7 +9,10 @@
     "services": "Services",
     "events": "Events",
     "gallery": "Gallery",
-    "contact": "Contact"
+    "contact": "Contact",
+    "logout": "Logout",
+    "adminLogin": "Admin Login",
+    "brandTitle": "Apli Janori"
   },
   "about": {
     "history": {
@@ -377,7 +380,7 @@
     "subtitle": "Reach out to the Janori Gram Panchayat",
     "getInTouch": {
       "title": "Get in Touch",
-      "description": "We are here to assist you with any queries or concerns. Contact us through any of the following means:"
+      "description": "We are here to assist you with any queries or concerns. Feel free to reach out to us through any of the following channels:"
     },
     "form": {
       "title": "Send Us a Message",
@@ -391,8 +394,8 @@
     },
     "address": {
       "title": "Our Address",
-      "line1": "Gram Panchayat Office, Janori",
-      "line2": "District: Pune, Maharashtra - 412108"
+      "line1": "At post Janori Tq. Shegaon Dist buldhana",
+      "line2": "Pin no. 444203"
     },
     "phone": {
       "title": "Phone Numbers",
@@ -400,7 +403,7 @@
       "sarpanch": "Sarpanch: +91 98765 43210"
     },
     "email": {
-      "title": "Email Addresses",
+      "title": "Email Address",
       "primary": "grampanchayat.janori@gov.in",
       "sarpanch": "sarpanch.janori@gov.in"
     },

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, User } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -41,7 +41,7 @@ const Navbar = () => {
     return location.pathname === path ? 'active' : '';
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Simple hardcoded check for demonstration
     if (adminUsername === 'admin' && adminPassword === '12345') {
@@ -69,8 +69,26 @@ const Navbar = () => {
             <img src={janoriLogo} alt="Logo" className="navbar-svg-logo" style={{ height: '80px', width: '80px', objectFit: 'contain' }} />
           </Link>
 
-          <div className="navbar-title" style={{ flex: 1, textAlign: 'center', fontSize: '2.8rem', fontWeight: 'bold', color: '#fff', letterSpacing: '2px', userSelect: 'none' }}>
-            Apli Janori
+          <div 
+            className="navbar-title" 
+            style={{ 
+              flex: 1, 
+              textAlign: 'center', 
+              fontSize: '2.8rem', 
+              fontWeight: 'bold', 
+              color: isScrolled ? '#222' : '#fff', 
+              letterSpacing: '2px', 
+              userSelect: 'none',
+              transition: 'color 0.5s, text-shadow 0.5s',
+              textShadow: isScrolled 
+                ? '0 2px 12px rgba(0,0,0,0.08), 0 1px 0 #fff, 0 0 16px #007bff' 
+                : '0 4px 24px rgba(0,0,0,0.25), 0 1px 0 #007bff, 0 0 24px #fff',
+              transform: isScrolled ? 'rotateY(8deg) scale(1.04)' : 'rotateY(0deg) scale(1)',
+              perspective: '400px',
+              willChange: 'color, text-shadow, transform'
+            }}
+          >
+            {t('nav.brandTitle', 'Apli Janori')}
           </div>
 
           <div className="menu-icon" onClick={toggleMenu}>
@@ -113,19 +131,23 @@ const Navbar = () => {
               <li className="nav-item">
                 <button className={`nav-link${isScrolled ? ' scrolled' : ''}`} style={{background:'none',border:'none',color:'inherit',fontSize:'1rem',cursor:'pointer',marginLeft:0,display:'flex',alignItems:'center',gap:4,transition:'color 0.4s'}} onClick={() => setShowLogin(true)}>
                   <User size={18} style={{marginRight: 4, color: 'inherit', transition: 'color 0.4s'}} />
-                  Admin Login
+                  {t('nav.adminLogin', 'Admin Login')}
                 </button>
               </li>
             )}
             {isAdmin && (
               <li className="nav-item">
-                <button className="nav-link" style={{background:'none',border:'none',color:'#fff',fontSize:'1rem',cursor:'pointer',marginLeft:16}} onClick={() => {
-                  if (typeof window !== 'undefined') {
-                    window.localStorage.removeItem('isAdmin');
-                    window.location.reload();
-                  }
-                }}>
-                  Logout
+                <button
+                  className={`nav-link${isScrolled ? ' scrolled' : ''}`}
+                  style={{background:'none',border:'none',fontSize:'1rem',cursor:'pointer',marginLeft:16,display:'flex',alignItems:'center',gap:4,transition:'color 0.4s'}}
+                  onClick={() => {
+                    if (typeof window !== 'undefined') {
+                      window.localStorage.removeItem('isAdmin');
+                      window.location.reload();
+                    }
+                  }}
+                >
+                  {t('nav.logout', 'Logout')}
                 </button>
               </li>
             )}

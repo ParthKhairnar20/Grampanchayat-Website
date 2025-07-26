@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import HeroSection from '../components/HeroSection';
 import { Users, Award, Map } from 'lucide-react';
@@ -17,7 +16,7 @@ const About = () => {
         <div className="container">
           <div className="village-info-content">
             <div className="village-image">
-              <img src="https://images.pexels.com/photos/4577372/pexels-photo-4577372.jpeg" alt="Janori Village View" />
+              <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=compress&w=800&q=80" alt="Janori Village Scenery" />
             </div>
             <div className="village-text">
               <h2>{t('about.history.title')}</h2>

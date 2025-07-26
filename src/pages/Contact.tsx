@@ -31,7 +31,7 @@ const Contact = () => {
                   <MapPin size={24} className="contact-icon" />
                   <div className="contact-text">
                     <h3>{t('contact.address.title', 'Our Address')}</h3>
-                    <p>{t('contact.address.line1', 'Gram Panchayat Office, Janori,')}<br />{t('contact.address.line2', 'District: Pune, Maharashtra - 412108')}</p>
+                    <p>{t('contact.address.line1', 'At post Janori Tq. Shegaon Dist buldhana')}<br />{t('contact.address.line2', 'Pin no. 444203')}</p>
                   </div>
                 </div>
                 <div className="contact-item">

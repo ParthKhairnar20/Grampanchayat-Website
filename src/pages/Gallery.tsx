@@ -12,78 +12,97 @@ const Gallery = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
+  // Admin authentication check
+  const isAdmin = typeof window !== 'undefined' && window.localStorage.getItem('isAdmin') === 'true';
+
+  // State for uploaded images (pending/approved)
+  const [userImages, setUserImages] = useState<Array<{id:number,src:string,alt:string,category:string,status:'pending'|'approved'}>>([]);
+  let nextUserImageId = userImages.length + 100;
+
   const images = [
     {
       id: 1,
       src: 'https://images.pexels.com/photos/31643020/pexels-photo-31643020/free-photo-of-serene-river-landscape-in-ramamangalam-kerala.png?auto=compress&cs=tinysrgb&w=600',
       alt: t('gallery.images.1.alt', 'Village Landscape'),
-      category: t('gallery.images.1.category', 'village')
+      category: t('gallery.images.1.category', 'village'),
+      status: 'approved' as 'approved'
     },
     {
       id: 2,
       src: 'https://media.istockphoto.com/id/491267876/photo/cauliflower-plantation.jpg?b=1&s=612x612&w=0&k=20&c=llHvM15l90TuKxzShH03fgYD57dVT3cMaEOEAnqbXO8=',
       alt: t('gallery.images.2.alt', 'Farming Activities'),
-      category: t('gallery.images.2.category', 'agriculture')
+      category: t('gallery.images.2.category', 'agriculture'),
+      status: 'approved' as 'approved'
     },
     {
       id: 3,
       src: 'https://images.pexels.com/photos/57901/pexels-photo-57901.jpeg?auto=compress&cs=tinysrgb&w=600',
       alt: t('gallery.images.3.alt', 'Local Festival Celebration'),
-      category: t('gallery.images.3.category', 'culture')
+      category: t('gallery.images.3.category', 'culture'),
+      status: 'approved' as 'approved'
     },
     {
       id: 4,
       src: 'https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=600',
       alt: t('gallery.images.4.alt', 'Community Meeting'),
-      category: t('gallery.images.4.category', 'events')
+      category: t('gallery.images.4.category', 'events'),
+      status: 'approved' as 'approved'
     },
     {
       id: 5,
       src: 'https://images.pexels.com/photos/764681/pexels-photo-764681.jpeg?auto=compress&cs=tinysrgb&w=600',
       alt: t('gallery.images.5.alt', 'School Children'),
-      category: t('gallery.images.5.category', 'education')
+      category: t('gallery.images.5.category', 'education'),
+      status: 'approved' as 'approved'
     },
     {
       id: 6,
       src: 'https://images.pexels.com/photos/28236020/pexels-photo-28236020/free-photo-of-kerala-cultural-programmes.jpeg?auto=compress&cs=tinysrgb&w=600',
       alt: t('gallery.images.6.alt', 'Cultural Program'),
-      category: t('gallery.images.6.category', 'culture')
+      category: t('gallery.images.6.category', 'culture'),
+      status: 'approved' as 'approved'
     },
     {
       id: 7,
       src: 'https://images.pexels.com/photos/31942685/pexels-photo-31942685/free-photo-of-vibrant-temple-scene-in-badami-karnataka.jpeg?auto=compress&cs=tinysrgb&w=600',
       alt: t('gallery.images.7.alt', 'Village Temple'),
-      category: t('gallery.images.7.category', 'village')
+      category: t('gallery.images.7.category', 'village'),
+      status: 'approved' as 'approved'
     },
     {
       id: 8,
       src: 'https://images.pexels.com/photos/27442241/pexels-photo-27442241/free-photo-of-sultan-sazligi.jpeg?auto=compress&cs=tinysrgb&w=600',
       alt: t('gallery.images.8.alt', 'Wheat Fields'),
-      category: t('gallery.images.8.category', 'agriculture')
+      category: t('gallery.images.8.category', 'agriculture'),
+      status: 'approved' as 'approved'
     },
     {
       id: 9,
       src: 'https://images.pexels.com/photos/31959161/pexels-photo-31959161/free-photo-of-indian-farmer-bathing-water-buffaloes-in-summer-pond.jpeg?auto=compress&cs=tinysrgb&w=600',
       alt: t('gallery.images.9.alt', 'Village Pond'),
-      category: t('gallery.images.9.category', 'village')
+      category: t('gallery.images.9.category', 'village'),
+      status: 'approved' as 'approved'
     },
     {
       id: 10,
       src: 'https://media.istockphoto.com/id/544678254/photo/inside-field-hospital-tent.jpg?b=1&s=612x612&w=0&k=20&c=DO4_3bruHVM4vOcQOzsGaVyYS83vJlJKGE6D-ZqfnB4=',
       alt: t('gallery.images.10.alt', 'Health Camp'),
-      category: t('gallery.images.10.category', 'events')
+      category: t('gallery.images.10.category', 'events'),
+      status: 'approved' as 'approved'
     },
     {
       id: 11,
       src: 'https://images.pexels.com/photos/31940733/pexels-photo-31940733/free-photo-of-indonesian-students-in-classroom-exam-setting.jpeg?auto=compress&cs=tinysrgb&w=600',
       alt: t('gallery.images.11.alt', 'School Activities'),
-      category: t('gallery.images.11.category', 'education')
+      category: t('gallery.images.11.category', 'education'),
+      status: 'approved' as 'approved'
     },
     {
       id: 12,
       src: 'https://media.istockphoto.com/id/143917716/photo/traditional-folk-dancers-in-india.jpg?b=1&s=612x612&w=0&k=20&c=hMcjole_JmhuoLOCops8zjJ1J310lrhCxky5fg4zPro=',
       alt: t('gallery.images.12.alt', 'Traditional Dance'),
-      category: t('gallery.images.12.category', 'culture')
+      category: t('gallery.images.12.category', 'culture'),
+      status: 'approved' as 'approved'
     }
   ];
 
@@ -111,16 +130,37 @@ const Gallery = () => {
     }
   ];
 
+  // Show only approved images to all, admin sees all
+  const displayImages = isAdmin ? [...images, ...userImages] : [...images, ...userImages.filter(img => img.status === 'approved')];
+
+  // Non-admin users upload images as pending, admin uploads as approved
   const handleMediaUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (!files || files.length === 0) return;
     setUploading(true);
-    // Simulate upload
     setTimeout(() => {
+      const newImgs = Array.from(files).map((file, idx) => ({
+        id: nextUserImageId + idx,
+        src: URL.createObjectURL(file),
+        alt: file.name,
+        category: isAdmin ? 'admin' : 'user',
+        status: isAdmin ? 'approved' as 'approved' : 'pending' as 'pending'
+      }));
+      setUserImages(prev => [...prev, ...newImgs]);
       setUploading(false);
       setUploadMessage(t('gallery.uploadSuccess', 'Media uploaded successfully!'));
       setTimeout(() => setUploadMessage(null), 3000);
     }, 1500);
+  };
+
+  // Admin approval handler
+  const handleApprove = (id: number) => {
+    setUserImages(prev => prev.map(img => img.id === id ? { ...img, status: 'approved' } : img));
+  };
+
+  // Delete image handler (admin only)
+  const handleDelete = (id: number) => {
+    setUserImages(prev => prev.filter(img => img.id !== id));
   };
 
   const openLightbox = (index: number) => {
@@ -147,19 +187,31 @@ const Gallery = () => {
             <p>{t('gallery.photoGallerySubtitle', 'A visual journey through our village life and activities')}</p>
           </div>
           <div className="gallery-grid">
-            {images.map((img, idx) => (
+            {displayImages.map((img, idx) => (
               <div key={img.id} className="gallery-image-wrapper" onClick={() => openLightbox(idx)} style={{cursor: 'pointer', position: 'relative'}}>
                 <img src={img.src} alt={img.alt} className="gallery-image" />
                 <div className="gallery-image-overlay">{img.alt}</div>
+                {isAdmin && img.status === 'pending' && (
+                  <button onClick={e => {e.stopPropagation(); handleApprove(img.id);}} style={{position:'absolute',top:8,right:8,background:'#ff9800',color:'#fff',border:'none',borderRadius:4,padding:'4px 10px',fontWeight:600,cursor:'pointer',zIndex:2}}>Approve</button>
+                )}
+                {isAdmin && (
+                  <button onClick={e => {e.stopPropagation(); handleDelete(img.id);}} style={{position:'absolute',top:8,left:8,background:'#e53935',color:'#fff',border:'none',borderRadius:4,padding:'4px 10px',fontWeight:600,cursor:'pointer',zIndex:2}}>Delete</button>
+                )}
+                {isAdmin && img.status === 'pending' && (
+                  <div style={{position:'absolute',bottom:8,right:8,background:'#fff3',color:'#ff9800',padding:'2px 8px',borderRadius:4,fontWeight:500,fontSize:12}}>Pending</div>
+                )}
               </div>
             ))}
           </div>
-          {lightboxOpen && (
+          {lightboxOpen && displayImages[lightboxIndex] && (
             <div className="lightbox-overlay" style={{position: 'fixed', top:0, left:0, width:'100vw', height:'100vh', background:'rgba(0,0,0,0.8)', display:'flex', alignItems:'center', justifyContent:'center', zIndex:1000}} onClick={closeLightbox}>
               <button onClick={e => {e.stopPropagation(); prevImage();}} style={{position:'absolute', left:30, top:'50%', transform:'translateY(-50%)', fontSize:32, color:'#fff', background:'none', border:'none', cursor:'pointer'}}>&#8592;</button>
               <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
-                <img src={images[lightboxIndex].src} alt={images[lightboxIndex].alt} style={{maxHeight:'80vh', maxWidth:'80vw', borderRadius:8}} onClick={e => e.stopPropagation()} />
-                <div style={{color:'#fff', marginTop:16, fontSize:20, fontWeight:500, textAlign:'center'}}>{images[lightboxIndex].alt}</div>
+                <img src={displayImages[lightboxIndex].src} alt={displayImages[lightboxIndex].alt} style={{maxHeight:'80vh', maxWidth:'80vw', borderRadius:8}} onClick={e => e.stopPropagation()} />
+                <div style={{color:'#fff', marginTop:16, fontSize:20, fontWeight:500, textAlign:'center'}}>{displayImages[lightboxIndex].alt}</div>
+                {isAdmin && (
+                  <button onClick={e => {e.stopPropagation(); handleDelete(displayImages[lightboxIndex].id); closeLightbox();}} style={{marginTop:16, background:'#e53935', color:'#fff', border:'none', borderRadius:4, padding:'8px 18px', fontWeight:600, cursor:'pointer'}}>Delete</button>
+                )}
               </div>
               <button onClick={e => {e.stopPropagation(); nextImage();}} style={{position:'absolute', right:30, top:'50%', transform:'translateY(-50%)', fontSize:32, color:'#fff', background:'none', border:'none', cursor:'pointer'}}>&#8594;</button>
               <button onClick={e => {e.stopPropagation(); closeLightbox();}} style={{position:'absolute', top:30, right:30, fontSize:32, color:'#fff', background:'none', border:'none', cursor:'pointer'}}>✕</button>
@@ -211,7 +263,7 @@ const Gallery = () => {
               {t('gallery.submitMedia', 'Submit Media')}
               <input
                 type="file"
-                accept="image/*,video/*"
+                accept="image/*"
                 style={{ display: 'none' }}
                 disabled={uploading}
                 onChange={handleMediaUpload}
@@ -220,6 +272,11 @@ const Gallery = () => {
             </label>
             {uploading && <p style={{ color: '#007bff', marginTop: 8 }}>{t('gallery.uploading', 'Uploading...')}</p>}
             {uploadMessage && <p style={{ color: 'green', marginTop: 8 }}>{uploadMessage}</p>}
+            {!isAdmin && uploadMessage && (
+              <p style={{ color: '#ff9800', marginTop: 8, fontWeight: 500 }}>
+                {t('gallery.userUploadSuccess', 'Your image has been uploaded successfully and is pending admin approval.')}
+              </p>
+            )}
           </div>
         </div>
       </section>

@@ -137,6 +137,71 @@
   color: var(--primary-color) !important;
 }
 
+.hero-section {
+  padding: 80px 0 60px 0;
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: none;
+}
+
+.hero-section .hero-content {
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  max-width: 100vw;
+  margin: 0 auto;
+  box-shadow: none;
+}
+
+.hero-section .hero-title {
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 18px;
+  margin-top: 0;
+  line-height: 1.25;
+  text-align: center;
+  word-break: break-word;
+  text-shadow: 0 1px 0 #ff9800;
+}
+
+.hero-section .hero-subtitle {
+  font-size: 1.35rem;
+  color: #f3f3f3;
+  margin-bottom: 0;
+  text-align: center;
+  line-height: 1.5;
+  text-shadow: 0 1px 0 #ff9800;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 60px 0 30px 0;
+    min-height: 220px;
+  }
+  .hero-section .hero-title {
+    font-size: 1.7rem;
+  }
+  .hero-section .hero-content {
+    padding: 0;
+    max-width: 98vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding-top: 40px;
+    padding-bottom: 20px;
+    min-height: 120px;
+  }
+  .hero-section .hero-title {
+    font-size: 1.1rem;
+  }
+}
+
 @media screen and (max-width: 992px) {
   .menu-icon {
     display: block;
