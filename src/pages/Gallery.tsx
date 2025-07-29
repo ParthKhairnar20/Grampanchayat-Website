@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import HeroSection from '../components/HeroSection';
 import GalleryGrid from '../components/GalleryGrid';
@@ -15,10 +15,90 @@ const Gallery = () => {
   // Admin authentication check
   const isAdmin = typeof window !== 'undefined' && window.localStorage.getItem('isAdmin') === 'true';
 
-  // State for uploaded images (pending/approved)
+  // State for gallery images from backend
+  const [galleryImages, setGalleryImages] = useState<Array<{
+    id: number;
+    name: string;
+    url: string;
+    description?: string;
+    uploaded_at: string;
+  }>>([]);
+
+  // Fetch gallery images from backend
+  const fetchGalleryImages = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/gallery/photos');
+      const data = await response.json();
+      setGalleryImages(data);
+    } catch (error) {
+      console.error('Error fetching gallery images:', error);
+    }
+  };
+
+  // Load images on component mount
+  useEffect(() => {
+    fetchGalleryImages();
+  }, []);
+
+  // Handle gallery image upload
+  const handleGalleryUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
+    
+    setUploading(true);
+    setUploadMessage(null);
+
+    try {
+      const formData = new FormData();
+      formData.append('file', files[0]);
+      formData.append('uploaded_by', isAdmin ? 'admin' : 'user');
+      formData.append('description', 'Uploaded via website');
+
+      const response = await fetch('http://localhost:5000/gallery/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        setUploadMessage('Image uploaded successfully!');
+        // Refresh the gallery
+        fetchGalleryImages();
+      } else {
+        setUploadMessage('Upload failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Upload error:', error);
+      setUploadMessage('Upload failed. Please try again.');
+    } finally {
+      setUploading(false);
+      setTimeout(() => setUploadMessage(null), 3000);
+    }
+  };
+
+  // Handle gallery image delete
+  const handleGalleryDelete = async (id: number) => {
+    try {
+      const response = await fetch(`http://localhost:5000/gallery/photos/${id}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        // Refresh the gallery
+        fetchGalleryImages();
+      } else {
+        console.error('Delete failed');
+      }
+    } catch (error) {
+      console.error('Delete error:', error);
+    }
+  };
+
+  // State for uploaded images (pending/approved) - keeping existing functionality
   const [userImages, setUserImages] = useState<Array<{id:number,src:string,alt:string,category:string,status:'pending'|'approved'}>>([]);
   let nextUserImageId = userImages.length + 100;
 
+  // Original hardcoded images (keeping for reference)
   const images = [
     {
       id: 1,
@@ -130,8 +210,19 @@ const Gallery = () => {
     }
   ];
 
-  // Show only approved images to all, admin sees all
-  const displayImages = isAdmin ? [...images, ...userImages] : [...images, ...userImages.filter(img => img.status === 'approved')];
+  // Combine backend gallery images with original images
+  const displayImages = [
+    ...galleryImages.map(img => ({
+      id: img.id,
+      src: img.url,
+      alt: img.name,
+      category: 'gallery',
+      status: 'approved' as 'approved',
+      isBackendImage: true
+    })),
+    ...images,
+    ...userImages.filter(img => img.status === 'approved')
+  ];
 
   // Non-admin users upload images as pending, admin uploads as approved
   const handleMediaUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -169,8 +260,8 @@ const Gallery = () => {
   };
 
   const closeLightbox = () => setLightboxOpen(false);
-  const prevImage = () => setLightboxIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-  const nextImage = () => setLightboxIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  const prevImage = () => setLightboxIndex((prev) => (prev === 0 ? displayImages.length - 1 : prev - 1));
+  const nextImage = () => setLightboxIndex((prev) => (prev === displayImages.length - 1 ? 0 : prev + 1));
 
   return (
     <div className="gallery-page">
@@ -194,8 +285,8 @@ const Gallery = () => {
                 {isAdmin && img.status === 'pending' && (
                   <button onClick={e => {e.stopPropagation(); handleApprove(img.id);}} style={{position:'absolute',top:8,right:8,background:'#ff9800',color:'#fff',border:'none',borderRadius:4,padding:'4px 10px',fontWeight:600,cursor:'pointer',zIndex:2}}>Approve</button>
                 )}
-                {isAdmin && (
-                  <button onClick={e => {e.stopPropagation(); handleDelete(img.id);}} style={{position:'absolute',top:8,left:8,background:'#e53935',color:'#fff',border:'none',borderRadius:4,padding:'4px 10px',fontWeight:600,cursor:'pointer',zIndex:2}}>Delete</button>
+                {isAdmin && (img as any).isBackendImage && (
+                  <button onClick={e => {e.stopPropagation(); handleGalleryDelete(img.id);}} style={{position:'absolute',top:8,left:8,background:'#e53935',color:'#fff',border:'none',borderRadius:4,padding:'4px 10px',fontWeight:600,cursor:'pointer',zIndex:2}}>Delete</button>
                 )}
                 {isAdmin && img.status === 'pending' && (
                   <div style={{position:'absolute',bottom:8,right:8,background:'#fff3',color:'#ff9800',padding:'2px 8px',borderRadius:4,fontWeight:500,fontSize:12}}>Pending</div>
@@ -209,8 +300,8 @@ const Gallery = () => {
               <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
                 <img src={displayImages[lightboxIndex].src} alt={displayImages[lightboxIndex].alt} style={{maxHeight:'80vh', maxWidth:'80vw', borderRadius:8}} onClick={e => e.stopPropagation()} />
                 <div style={{color:'#fff', marginTop:16, fontSize:20, fontWeight:500, textAlign:'center'}}>{displayImages[lightboxIndex].alt}</div>
-                {isAdmin && (
-                  <button onClick={e => {e.stopPropagation(); handleDelete(displayImages[lightboxIndex].id); closeLightbox();}} style={{marginTop:16, background:'#e53935', color:'#fff', border:'none', borderRadius:4, padding:'8px 18px', fontWeight:600, cursor:'pointer'}}>Delete</button>
+                {isAdmin && (displayImages[lightboxIndex] as any).isBackendImage && (
+                  <button onClick={e => {e.stopPropagation(); handleGalleryDelete(displayImages[lightboxIndex].id); closeLightbox();}} style={{marginTop:16, background:'#e53935', color:'#fff', border:'none', borderRadius:4, padding:'8px 18px', fontWeight:600, cursor:'pointer'}}>Delete</button>
                 )}
               </div>
               <button onClick={e => {e.stopPropagation(); nextImage();}} style={{position:'absolute', right:30, top:'50%', transform:'translateY(-50%)', fontSize:32, color:'#fff', background:'none', border:'none', cursor:'pointer'}}>&#8594;</button>
@@ -266,7 +357,7 @@ const Gallery = () => {
                 accept="image/*"
                 style={{ display: 'none' }}
                 disabled={uploading}
-                onChange={handleMediaUpload}
+                onChange={handleGalleryUpload}
                 multiple
               />
             </label>

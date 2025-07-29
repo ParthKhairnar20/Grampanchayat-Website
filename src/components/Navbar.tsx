@@ -41,20 +41,50 @@ const Navbar = () => {
     return location.pathname === path ? 'active' : '';
   };
 
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Simple hardcoded check for demonstration
-    if (adminUsername === 'admin' && adminPassword === '12345') {
-      setShowLogin(false);
-      if (typeof window !== 'undefined') {
-        window.localStorage.setItem('isAdmin', 'true');
-        // Instead of reload, just update state so Upload button does not show
+    setLoginError('');
+    
+    try {
+      const response = await fetch('http://localhost:5000/api/admin-login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: adminUsername,
+          password: adminPassword,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.token) {
+        // Store the JWT token
+        if (typeof window !== 'undefined') {
+          window.localStorage.setItem('adminToken', data.token);
+          window.localStorage.setItem('isAdmin', 'true');
+        }
+        setShowLogin(false);
         setAdminUsername('');
         setAdminPassword('');
         setLoginError('');
+        // Refresh the page to update admin state
+        window.location.reload();
+      } else {
+        setLoginError(data.error || 'Login failed');
       }
-    } else {
-      setLoginError('Invalid credentials');
+    } catch (error) {
+      console.error('Login error:', error);
+      setLoginError('Network error. Please try again.');
+    }
+  };
+
+  const handleLogout = () => {
+    if (typeof window !== 'undefined') {
+      window.localStorage.removeItem('adminToken');
+      window.localStorage.removeItem('isAdmin');
+      window.location.reload();
     }
   };
 
@@ -129,8 +159,11 @@ const Navbar = () => {
             {/* Always show Admin Login if not logged in as admin */}
             {!isAdmin && (
               <li className="nav-item">
-                <button className={`nav-link${isScrolled ? ' scrolled' : ''}`} style={{background:'none',border:'none',color:'inherit',fontSize:'1rem',cursor:'pointer',marginLeft:0,display:'flex',alignItems:'center',gap:4,transition:'color 0.4s'}} onClick={() => setShowLogin(true)}>
-                  <User size={18} style={{marginRight: 4, color: 'inherit', transition: 'color 0.4s'}} />
+                <button
+                  className={`nav-link admin-btn${isScrolled ? ' scrolled' : ''}`}
+                  onClick={() => setShowLogin(true)}
+                >
+                  <User size={18} className="admin-btn-icon" />
                   {t('nav.adminLogin', 'Admin Login')}
                 </button>
               </li>
@@ -140,12 +173,7 @@ const Navbar = () => {
                 <button
                   className={`nav-link${isScrolled ? ' scrolled' : ''}`}
                   style={{background:'none',border:'none',fontSize:'1rem',cursor:'pointer',marginLeft:16,display:'flex',alignItems:'center',gap:4,transition:'color 0.4s'}}
-                  onClick={() => {
-                    if (typeof window !== 'undefined') {
-                      window.localStorage.removeItem('isAdmin');
-                      window.location.reload();
-                    }
-                  }}
+                  onClick={handleLogout}
                 >
                   {t('nav.logout', 'Logout')}
                 </button>
@@ -156,16 +184,35 @@ const Navbar = () => {
             </li>
           </ul>
           {showLogin && (
-            <div className="admin-login-modal" style={{position:'fixed',top:0,left:0,width:'100vw',height:'100vh',background:'rgba(0,0,0,0.5)',display:'flex',alignItems:'center',justifyContent:'center',zIndex:2000}}>
-              <form onSubmit={handleLogin} style={{background:'#fff',padding:32,borderRadius:8,minWidth:320,boxShadow:'0 2px 16px rgba(0,0,0,0.2)',display:'flex',flexDirection:'column',gap:16}}>
-                <h2 style={{margin:0}}>Admin Login</h2>
-                <input type="text" placeholder="Username" value={adminUsername} onChange={e => setAdminUsername(e.target.value)} style={{padding:8,fontSize:16}} />
-                <input type="password" placeholder="Password" value={adminPassword} onChange={e => setAdminPassword(e.target.value)} style={{padding:8,fontSize:16}} />
-                {loginError && <div style={{color:'red'}}>{loginError}</div>}
-                <div style={{display:'flex',gap:8,justifyContent:'flex-end'}}>
-                  <button type="button" onClick={() => setShowLogin(false)} style={{padding:'8px 16px'}}>Cancel</button>
-                  <button type="submit" style={{padding:'8px 16px',background:'#007bff',color:'#fff',border:'none',borderRadius:4}}>Login</button>
+            <div className="admin-login-modal-bg">
+              <form className="admin-login-card" onSubmit={handleLogin}>
+                <h2 className="admin-login-title">login</h2>
+                <label className="admin-login-label">
+                  Username
+                  <input
+                    type="text"
+                    className="admin-login-input"
+                    value={adminUsername}
+                    onChange={e => setAdminUsername(e.target.value)}
+                  />
+                </label>
+                <label className="admin-login-label">
+                  Password
+                  <input
+                    type="password"
+                    className="admin-login-input"
+                    value={adminPassword}
+                    onChange={e => setAdminPassword(e.target.value)}
+                  />
+                </label>
+                <div className="admin-login-options">
+                  <label>
+                    <input type="checkbox" style={{marginRight:4}} /> <span style={{color:'#2196f3'}}>Remember me</span>
+                  </label>
                 </div>
+                {loginError && <div style={{color:'#e53935',textAlign:'center'}}>{loginError}</div>}
+                <button type="submit" className="admin-login-btn">Login</button>
+                <button type="button" className="admin-login-cancel" onClick={() => setShowLogin(false)}>Cancel</button>
               </form>
             </div>
           )}

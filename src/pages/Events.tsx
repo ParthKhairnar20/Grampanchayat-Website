@@ -314,14 +314,28 @@ const Events = () => {
             </div>
           </div>
           {isAdmin && proposals.length > 0 && (
-            <div style={{margin:'40px auto 0',maxWidth:600,background:'#fff',borderRadius:12,boxShadow:'0 2px 12px rgba(0,0,0,0.08)',padding:24}}>
-              <h3 style={{color:'#007bff',marginBottom:16}}>Proposed Events</h3>
-              <ul style={{listStyle:'none',padding:0,margin:0}}>
+            <div className="proposed-events-container">
+              <h3>Proposed Events</h3>
+              <ul className="proposed-events-list">
                 {proposals.map((p: { name: string; email: string; title: string; date: string; description: string }, idx: number) => (
-                  <li key={idx} style={{borderBottom:'1px solid #eee',padding:'12px 0'}}>
-                    <div style={{fontWeight:600}}>{p.title} <span style={{fontWeight:400,color:'#888',fontSize:13}}>({p.date})</span></div>
-                    <div style={{color:'#555',fontSize:15,margin:'4px 0 2px 0'}}>{p.description}</div>
-                    <div style={{fontSize:13,color:'#888'}}>By: {p.name} ({p.email})</div>
+                  <li key={idx} className="proposed-event-item">
+                    <div className="proposed-event-title">{p.title} <span className="proposed-event-date">({p.date})</span></div>
+                    <div className="proposed-event-description">{p.description}</div>
+                    <div className="proposed-event-author">By: {p.name} ({p.email})</div>
+                    <button
+                      onClick={() => {
+                        setProposals((prev: typeof proposals) => {
+                          const updated = prev.filter((_: any, index: number) => index !== idx);
+                          if (typeof window !== 'undefined') {
+                            window.localStorage.setItem('eventProposals', JSON.stringify(updated));
+                          }
+                          return updated;
+                        });
+                      }}
+                      className="proposed-event-delete-btn"
+                    >
+                      Delete
+                    </button>
                   </li>
                 ))}
               </ul>
