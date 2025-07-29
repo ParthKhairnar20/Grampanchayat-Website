@@ -1,2 +1,2 @@
 # Grampanchayat-Website
-please change the branch to master branch to checkout the website 
+Note : Please change the branch to (*master*) branch to checkout the website 
