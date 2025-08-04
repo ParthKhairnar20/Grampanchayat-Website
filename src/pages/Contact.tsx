@@ -18,7 +18,7 @@ const Contact = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev: any) => ({
       ...prev,
       [name]: value
     }));
@@ -139,11 +139,11 @@ const Contact = () => {
                     </>
                   )}
                 </button>
-                {submitMessage && (
-                  <div className={`submit-message ${submitMessage.type === 'success' ? 'success' : 'error'}`}>
-                    {submitMessage.text}
-                  </div>
-                )}
+                                 {submitMessage && (
+                   <div className={`submit-message ${submitMessage.type === 'success' ? 'success' : 'error'}`}>
+                     {submitMessage.text}
+                   </div>
+                 )}
               </form>
             </div>
           </div>
@@ -158,42 +158,14 @@ const Contact = () => {
           </div>
           <div className="map-container">
             <iframe
-              title="Janori Village Location"
-              src="https://www.google.com/maps?q=Janori,+Maharashtra,+India&output=embed"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15057.534307881755!2d76.6912!3d20.5937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDM1JzM0LjciTiA3NsKwNDEnMjguMyJF!5e0!3m2!1sen!2sin!4v1234567890"
               width="100%"
-              height="350"
-              style={{ border: 0, borderRadius: 8 }}
+              height="450"
+              style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
-          </div>
-          <div className="directions">
-            <h3>{t('contact.map.directionsTitle', 'How to Reach Us')}</h3>
-            <div className="direction-options">
-              <div className="direction-option">
-                <h4>{t('contact.map.byBus', 'By Bus')}</h4>
-                <p>{t('contact.map.byBusDesc', 'Take state transport bus to Janori bus stop. The Panchayat office is 500m from the bus stop.')}</p>
-              </div>
-              <div className="direction-option">
-                <h4>{t('contact.map.byCar', 'By Car')}</h4>
-                <p>{t('contact.map.byCarDesc', 'From Pune, take the Pune-Solapur highway and turn at Janori junction. Follow the signboards to reach the village center.')}</p>
-              </div>
-              <div className="direction-option">
-                <h4>{t('contact.map.byTrain', 'By Train')}</h4>
-                <p>{t('contact.map.byTrainDesc', 'The nearest railway station is Hadapsar (15 km). Take an auto-rickshaw or bus to reach Janori.')}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="feedback-section">
-        <div className="container">
-          <div className="feedback-content">
-            <h2>{t('contact.feedback.title', 'Your Feedback Matters')}</h2>
-            <p>{t('contact.feedback.description', 'We value your suggestions and feedback to improve our services. Please share your thoughts to help us serve you better.')}</p>
-            <button className="btn-secondary">{t('contact.feedback.button', 'Give Feedback')}</button>
           </div>
         </div>
       </section>

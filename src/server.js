@@ -19,10 +19,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// PostgreSQL connection (Supabase)
+// PostgreSQL connection
 const db = new Pool({
-  connectionString: process.env.SUPABASE_DB_URL || 'your-supabase-database-url-here',
-  ssl: { rejectUnauthorized: false }
+  user: 'postgres',
+  host: 'localhost',
+  database: 'grampanchayat',
+  password: 'India@11',
+  port: 5432
 });
 
 // Multer setup for documents (existing)
@@ -209,7 +212,34 @@ function verifyAdmin(req, res, next) {
 
 // Serve uploaded files
 app.use('/uploads', express.static(path.join(projectRoot, 'uploads')));
-// Serve gallery uploaded files
 app.use('/gallery_uploads', express.static(path.join(projectRoot, 'gallery_uploads')));
 
-app.listen(5000, () => console.log('Server started on port 5000'));
+// Serve React app in production (must be last)
+if (process.env.NODE_ENV === 'production') {
+  // Serve static files from dist folder with proper MIME types
+  app.use(express.static(path.join(projectRoot, 'dist'), {
+    setHeaders: (res, path) => {
+      if (path.endsWith('.js')) {
+        res.setHeader('Content-Type', 'application/javascript');
+      } else if (path.endsWith('.css')) {
+        res.setHeader('Content-Type', 'text/css');
+      }
+    }
+  }));
+  
+  // Handle all other routes by serving index.html (for React Router)
+  // This must be the last route to avoid conflicts with API routes
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(projectRoot, 'dist', 'index.html'));
+  });
+}
+
+app.listen(5000, () => {
+  console.log('Server started on port 5000');
+  if (process.env.NODE_ENV === 'production') {
+    console.log('Production mode: Serving built React app');
+    console.log('Website available at: http://localhost:5000');
+  } else {
+    console.log('Development mode: React app should be served separately');
+  }
+});
