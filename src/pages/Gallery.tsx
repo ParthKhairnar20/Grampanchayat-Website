@@ -11,6 +11,8 @@ const Gallery = () => {
   const [uploadMessage, setUploadMessage] = useState<string | null>(null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   // Admin authentication check
   const isAdmin = typeof window !== 'undefined' && window.localStorage.getItem('isAdmin') === 'true';
@@ -26,12 +28,22 @@ const Gallery = () => {
 
   // Fetch gallery images from backend
   const fetchGalleryImages = async () => {
+    setIsLoading(true);
+    setError(null);
     try {
       const response = await fetch('http://localhost:5000/gallery/photos');
+      if (!response.ok) {
+        throw new Error('Failed to fetch gallery images');
+      }
       const data = await response.json();
       setGalleryImages(data);
     } catch (error) {
       console.error('Error fetching gallery images:', error);
+      setError('Failed to load gallery images. Please try again later.');
+      // Set some default images if fetch fails
+      setGalleryImages([]);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -277,6 +289,16 @@ const Gallery = () => {
             <h2>{t('gallery.photoGalleryTitle', 'Photo Gallery')}</h2>
             <p>{t('gallery.photoGallerySubtitle', 'A visual journey through our village life and activities')}</p>
           </div>
+          {isLoading && (
+            <div className="gallery-loading">
+              Loading gallery images...
+            </div>
+          )}
+          {error && (
+            <div className="gallery-error" style={{ textAlign: 'center', color: '#dc3545', padding: '20px' }}>
+              {error}
+            </div>
+          )}
           <div className="gallery-grid">
             {displayImages.map((img, idx) => (
               <div key={img.id} className="gallery-image-wrapper" onClick={() => openLightbox(idx)} style={{cursor: 'pointer', position: 'relative'}}>

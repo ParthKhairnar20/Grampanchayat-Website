@@ -382,6 +382,25 @@
       "title": "Get in Touch",
       "description": "We are here to assist you with any queries or concerns. Feel free to reach out to us through any of the following channels:"
     },
+    "directions": {
+      "title": "How to Reach Us",
+      "subtitle": "Directions to Janori Gram Panchayat",
+      "byRoad": "By Road",
+      "fromShegaon": "12 km from Shegaon city - Take SH-24 towards Janori",
+      "fromBuldhana": "45 km from Buldhana - Via Shegaon-Buldhana Road",
+      "fromAkola": "65 km from Akola - Via NH-6 and SH-24",
+      "byRail": "By Railway",
+      "nearestStation": "Nearest Railway Station: Shegaon (12 km)",
+      "fromStation": "Auto-rickshaws and taxis available from station",
+      "byBus": "By Bus",
+      "stBus": "Regular ST buses from Shegaon bus stand",
+      "privateBus": "Private buses available from major cities",
+      "busFrequency": "Buses every 30 minutes from Shegaon",
+      "landmarks": "Major Landmarks",
+      "landmark1": "Near Janori Main Bus Stop",
+      "landmark2": "Next to Gram Panchayat School",
+      "landmark3": "Opposite to Village Market"
+    },
     "form": {
       "title": "Send Us a Message",
       "name": "Full Name",

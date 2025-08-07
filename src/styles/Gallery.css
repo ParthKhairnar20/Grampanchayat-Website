@@ -1,6 +1,14 @@
 .photo-gallery-section {
   padding: 80px 0;
   background-color: var(--white);
+  min-height: 400px;
+}
+
+.gallery-loading {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+  font-size: 1.1rem;
 }
 
 .video-gallery-section {

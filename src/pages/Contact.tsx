@@ -74,28 +74,28 @@ const Contact = () => {
                   <MapPin size={24} className="contact-icon" />
                   <div className="contact-text">
                     <h3>{t('contact.address.title', 'Our Address')}</h3>
-                    <p>{t('contact.address.line1', 'At post Janori Tq. Shegaon Dist buldhana')}<br />{t('contact.address.line2', 'Pin no. 444203')}</p>
+                    <p>{t('contact.address.line1', 'Gram Panchayat Office, Main Road')}<br />{t('contact.address.line2', 'Janori, Taluka Shegaon')}<br />{t('contact.address.line3', 'District Buldhana, Maharashtra - 444203')}</p>
                   </div>
                 </div>
                 <div className="contact-item">
                   <Phone size={24} className="contact-icon" />
                   <div className="contact-text">
                     <h3>{t('contact.phone.title', 'Phone Numbers')}</h3>
-                    <p>{t('contact.phone.office', 'Office: +91 2345 678901')}<br />{t('contact.phone.sarpanch', 'Sarpanch: +91 98765 43210')}</p>
+                    <p>{t('contact.phone.office', 'Gram Panchayat: +91 07265-252525')}<br />{t('contact.phone.sarpanch', 'Gram Sevak: +91 94xxxxxx10')}</p>
                   </div>
                 </div>
                 <div className="contact-item">
                   <Mail size={24} className="contact-icon" />
                   <div className="contact-text">
                     <h3>{t('contact.email.title', 'Email Address')}</h3>
-                    <p>{t('contact.email.primary', 'grampanchayat.janori@gov.in')}<br />{t('contact.email.sarpanch', 'sarpanch.janori@gov.in')}</p>
+                    <p>{t('contact.email.primary', 'grampanchayat.janori-bld@maharashtra.gov.in')}<br />{t('contact.email.help', 'helpdesk.janori@gmail.com')}</p>
                   </div>
                 </div>
                 <div className="contact-item">
                   <Clock size={24} className="contact-icon" />
                   <div className="contact-text">
                     <h3>{t('contact.hours.title', 'Office Hours')}</h3>
-                    <p>{t('contact.hours.weekdays', 'Monday to Saturday: 10:00 AM - 5:00 PM')}<br />{t('contact.hours.holidays', 'Sunday & Public Holidays: Closed')}</p>
+                    <p>{t('contact.hours.weekdays', 'Monday to Saturday: 09:30 AM - 6:00 PM')}<br />{t('contact.hours.holidays', 'Closed on Sundays & Government Holidays')}</p>
                   </div>
                 </div>
               </div>
@@ -150,6 +150,48 @@ const Contact = () => {
         </div>
       </section>
 
+      <section className="directions-section">
+        <div className="container">
+          <div className="section-header">
+            <h2>{t('contact.directions.title', 'How to Reach Us')}</h2>
+            <p>{t('contact.directions.subtitle', 'Directions to Janori Gram Panchayat')}</p>
+          </div>
+          <div className="directions-container">
+            <div className="direction-item">
+              <h3>{t('contact.directions.byRoad', 'By Road')}</h3>
+              <ul>
+                <li>{t('contact.directions.fromShegaon', '12 km from Shegaon city - Take SH-24 towards Janori')}</li>
+                <li>{t('contact.directions.fromBuldhana', '45 km from Buldhana - Via Shegaon-Buldhana Road')}</li>
+                <li>{t('contact.directions.fromAkola', '65 km from Akola - Via NH-6 and SH-24')}</li>
+              </ul>
+            </div>
+            <div className="direction-item">
+              <h3>{t('contact.directions.byRail', 'By Railway')}</h3>
+              <ul>
+                <li>{t('contact.directions.nearestStation', 'Nearest Railway Station: Shegaon (12 km)')}</li>
+                <li>{t('contact.directions.fromStation', 'Auto-rickshaws and taxis available from station')}</li>
+              </ul>
+            </div>
+            <div className="direction-item">
+              <h3>{t('contact.directions.byBus', 'By Bus')}</h3>
+              <ul>
+                <li>{t('contact.directions.stBus', 'Regular ST buses from Shegaon bus stand')}</li>
+                <li>{t('contact.directions.privateBus', 'Private buses available from major cities')}</li>
+                <li>{t('contact.directions.busFrequency', 'Buses every 30 minutes from Shegaon')}</li>
+              </ul>
+            </div>
+            <div className="direction-item">
+              <h3>{t('contact.directions.landmarks', 'Major Landmarks')}</h3>
+              <ul>
+                <li>{t('contact.directions.landmark1', 'Near Janori Main Bus Stop')}</li>
+                <li>{t('contact.directions.landmark2', 'Next to Gram Panchayat School')}</li>
+                <li>{t('contact.directions.landmark3', 'Opposite to Village Market')}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="map-section">
         <div className="container">
           <div className="section-header">
@@ -158,7 +200,7 @@ const Contact = () => {
           </div>
           <div className="map-container">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15057.534307881755!2d76.6912!3d20.5937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDM1JzM0LjciTiA3NsKwNDEnMjguMyJF!5e0!3m2!1sen!2sin!4v1234567890"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14935.781427942495!2d76.67962067725683!3d20.79599499522955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd748ed4bf6121f%3A0x45970edba96fea95!2sJanori%2C%20Maharashtra%20444203!5e0!3m2!1sen!2sin!4v1691397886901!5m2!1sen!2sin"
               width="100%"
               height="450"
               style={{ border: 0 }}

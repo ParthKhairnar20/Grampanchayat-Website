@@ -93,6 +93,7 @@ const Services = () => {
   const [documents, setDocuments] = useState<Array<{ id: number; name: string; url: string; [key: string]: any }>>([]);
   const [uploading, setUploading] = useState(false);
   const [uploadMsg, setUploadMsg] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // PDF Preview state
@@ -137,9 +138,38 @@ const Services = () => {
   }
 
   React.useEffect(() => {
-    fetch('http://localhost:5000/documents')
-      .then(res => res.json())
-      .then(setDocuments);
+    const fetchDocuments = async () => {
+      try {
+        setError(null);
+        const response = await fetch('http://localhost:5000/documents', {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+          }
+        });
+        
+        if (!response.ok) {
+          if (response.status === 404) {
+            throw new Error('Document service not found. Please check if the server is running.');
+          }
+          throw new Error(`Server error: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        if (!Array.isArray(data)) {
+          console.warn('Received non-array data:', data);
+          setDocuments([]);
+          return;
+        }
+        
+        setDocuments(data);
+      } catch (error) {
+        console.error('Error fetching documents:', error);
+        setError(error instanceof Error ? error.message : 'Failed to connect to the document service');
+        setDocuments([]);
+      }
+    };
+    fetchDocuments();
   }, []);
 
   const schemeLinks: { [key: number]: string } = {
@@ -305,11 +335,15 @@ const Services = () => {
             </div>
           )}
           <div className="docs-list">
-            {documents.length === 0 ? (
+            {error ? (
+              <p className="error-message" style={{ color: '#dc3545', textAlign: 'center', padding: '20px' }}>
+                {error}
+              </p>
+            ) : documents.length === 0 ? (
               <p>{t('services.docs.noDocs', 'No documents uploaded yet.')}</p>
             ) : (
               <ul>
-                {documents.map((doc, idx) => (
+                {Array.isArray(documents) && documents.map((doc, idx) => (
                   <li key={idx}>
                     {getFileIcon(doc.name)}
                     <span className="doc-name">{doc.name}</span>

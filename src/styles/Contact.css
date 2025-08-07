@@ -9,6 +9,64 @@
   gap: 40px;
 }
 
+/* Directions Section Styles */
+.directions-section {
+  padding: 60px 0;
+  background-color: #f8f9fa;
+}
+
+.directions-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.direction-item {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.direction-item h3 {
+  color: #333;
+  font-size: 1.25rem;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.direction-item ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.direction-item li {
+  padding: 8px 0;
+  position: relative;
+  padding-left: 20px;
+  line-height: 1.5;
+}
+
+.direction-item li:before {
+  content: "•";
+  color: #4a90e2;
+  position: absolute;
+  left: 0;
+}
+
+@media (max-width: 768px) {
+  .directions-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .direction-item {
+    padding: 20px;
+  }
+}
+
 .contact-info {
   padding-right: 20px;
 }
