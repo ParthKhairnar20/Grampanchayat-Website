@@ -11,12 +11,16 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    emptyOutDir: true,
-    sourcemap: true,
+    emptyOutDir: false,
+    sourcemap: false,
     cssCodeSplit: false,
     rollupOptions: {
       output: {
-        manualChunks: undefined
+        manualChunks: undefined,
+        format: 'iife',
+        entryFileNames: 'assets/[name].js',
+        chunkFileNames: 'assets/[name].js',
+        assetFileNames: 'assets/[name].[ext]'
       }
     }
   },
